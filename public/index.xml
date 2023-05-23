@@ -29,5 +29,14 @@ Next we will install the packages needed for creating the CRUD API. We&amp;rsquo
 In simple terms; during the second Reagan term, senior administration officials secretly facilitated the sales of weapons to Iran which at the time was under an arms embargo, and diverted the profits to the Contras, a group of anti-socialist rebels in Nicaragua that were opposed to the socialist Sandinista led government.</description>
     </item>
     
+    <item>
+      <title>test</title>
+      <link>/tech/init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/init/</guid>
+      <description>Test </description>
+    </item>
+    
   </channel>
 </rss>
