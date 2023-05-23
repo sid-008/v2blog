@@ -37,11 +37,21 @@ url = "mailto:siddharthtewari14@gmail.com"
 
 [menu]
   [[menu.header]]
-    name = "posts"
-    weight = 0
-    url = "/posts"
+    name = "home"
+    weight = 1
+    url = "/"
+
+  [[menu.header]]
+    name = "tech"
+    weight = 3
+    url = "/tech"
 
   [[menu.header]]
     name = "about"
-    weight = 0
+    weight = 2
     url = "/about"
+
+  [[menu.header]]
+    name = "articles"
+    weight = 4
+    url = "/articles"
