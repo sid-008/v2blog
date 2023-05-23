@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Sid T'
 theme = "nightfall"
 
 [markup]
@@ -40,7 +40,7 @@ icon = "fa fa-envelope fa-2x"
 
 [menu]
   [[menu.header]]
-    name = "home"
+    name = ""
     weight = 1
     url = "/"
 
