@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech on My New Hugo Site</title>
+    <link>/tech/</link>
+    <description>Recent content in Tech on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating a CRUD API with Go and MongoDB</title>
+      <link>/tech/mongocrud/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/mongocrud/</guid>
+      <description>Setup A CRUD API or a Create-Read-Update-Delete API is one of the first steps you take in your journey exploring the world of backend development.
+Get started with Golang by installing it on your computer if you haven’t already done so.
+This tutorial will require some basic knowledge of golang.
+Next we will install the packages needed for creating the CRUD API. We&amp;rsquo;ll be using Gin Gonic to route the API endpoints.</description>
+    </item>
+    
+  </channel>
+</rss>

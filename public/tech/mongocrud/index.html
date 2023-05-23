@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Creating a CRUD API with Go and MongoDB | Siddharth Tewari
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.111.3">
+
+
+<link rel="canonical" href="/tech/mongocrud/" >
+<link href="/sass/main.min.b3f12dd046634f13d55d6cbfac7acd09f466ef016fb9884aa4955f13b6232619.css" rel="stylesheet">
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">sid@localhost ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+                <li>
+                    <a href="/tech" title="" >
+                        ~/tech</a>
+                </li>
+                
+                <li>
+                    <a href="/articles" title="" >
+                        ~/articles</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Creating a CRUD API with Go and MongoDB</h1>
+    <section class="postMetadata">
+        <dl>
+            
+            
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2023-03-20">March 20, 2023</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>5 minutes</dd>
+            
+        </dl>
+    </section>
+    <div>
+        <h1 id="setup">Setup</h1>
+<p>A CRUD API or a Create-Read-Update-Delete API is one of the first steps you take in your journey exploring the world of backend development.</p>
+<p>Get started with Golang by installing it on your computer if you haven’t already done so.</p>
+<p>This tutorial will require some basic knowledge of golang.</p>
+<p>Next we will install the packages needed for creating the CRUD API. We&rsquo;ll be using Gin Gonic to route the API endpoints.</p>
+<pre tabindex="0"><code>go get github.com/gin-gonic/gin
+</code></pre><p>Now we install the mongoDB driver:</p>
+<pre tabindex="0"><code>go get go.mongodb.org/mongo-driver/mongo
+</code></pre><h1 id="directory-structure">Directory Structure</h1>
+<p>This is what your project directory should look like.</p>
+<pre tabindex="0"><code>.
+├── Collection
+│   └── getCollection.go
+├── databases
+│   └── database.go
+├── go.mod
+├── go.sum
+├── main.go
+├── model
+│   └── model.go
+└── routes
+    ├── create.go
+    ├── delete.go
+    ├── read.go
+    └── update.go
+</code></pre><h1 id="connecting-mongodb-to-go">Connecting MongoDB to Go</h1>
+<p>All you need is your local mongoDB URI to connect to your DB. It typically looks a little like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Mongo_URI</span> = <span style="color:#e6db74">&#34;mongodb://127.0.0.1:27017&#34;</span>
+</span></span></code></pre></div><p>Or</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span> <span style="color:#a6e22e">Mongo_URL</span> = <span style="color:#e6db74">&#34;mongodb://localhost:27017&#34;</span>
+</span></span></code></pre></div><p>In my case I have used the latter.</p>
+<p>Now create a new file named database, and create a database.go file in it with the following content</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">database</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo/options&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ConnectDB</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">Client</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Mongo_URL</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;mongodb://localhost:27017&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">NewClient</span>(<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">Client</span>().<span style="color:#a6e22e">ApplyURI</span>(<span style="color:#a6e22e">Mongo_URL</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Connect</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;connected to mongodb&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">client</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The ConnectDB function establishes a connection with the DB and returns a new MongoDB Client object.</p>
+<p><strong>IMPORTANT NOTE:</strong>
+It&rsquo;s best practice to hide environment variables like the database connection string in a .env file using the dotenv package. For tutorial purposes we will not be doing this.</p>
+<h1 id="create-database-collection">Create Database Collection</h1>
+<p>Mongo stores data in collections which is a way to interface with the underlying DB.</p>
+<p>Make a new folder, called Collection in your project root. Now create a new Go file, getCollection.go.</p>
+<p>This will be short.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">getcollection</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetCollection</span>(<span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">Client</span>, <span style="color:#a6e22e">collectionName</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">Collection</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">collection</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Database</span>(<span style="color:#e6db74">&#34;DB1&#34;</span>).<span style="color:#a6e22e">Collection</span>(<span style="color:#e6db74">&#34;Post&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">collection</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>All this code does is return the collection thats requested as shown in the codeblock</p>
+<pre tabindex="0"><code>collection := client.Database(&#34;DB1&#34;).Collection(&#34;Post&#34;)
+</code></pre><p>So here its returning the collection &ldquo;Post&rdquo; from &ldquo;DB1&rdquo;.</p>
+<h1 id="create-the-database-model">Create the Database model</h1>
+<p>Make the model folder in project root. Create a file named model.go in it.
+Your model in this case is a blog post with its title.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson/primitive&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Post</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ID</span>      <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">ObjectID</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Title</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Article</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This just defines what kind of data we will be putting into the DB.</p>
+<h1 id="creating-the-crud-api">Creating the CRUD API</h1>
+<p>Now we move onto actually defining the routes and their functionalities.</p>
+<p>Create a file named routes. Inside it create 4 go files as shown:</p>
+<pre tabindex="0"><code>routes
+    ├── create.go
+    ├── delete.go
+    ├── read.go
+    └── update.go
+</code></pre><h1 id="create-endpoint">CREATE endpoint</h1>
+<p>Creation of an entry in the DB is done by a <code>POST</code> request. We could say that we are quite literally posting a request to our DB.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">routes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">getcollection</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/Collection&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">database</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/databases&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">model</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/model&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson/primitive&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">CreatePost</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DB</span> = <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ConnectDB</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">postCollection</span> = <span style="color:#a6e22e">getcollection</span>.<span style="color:#a6e22e">GetCollection</span>(<span style="color:#a6e22e">DB</span>, <span style="color:#e6db74">&#34;Posts&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">post</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Post</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">BindJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">post</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">postPayload</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Post</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ID</span>:      <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">NewObjectID</span>(),
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Title</span>:   <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">Title</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Article</span>: <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">Article</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">postCollection</span>.<span style="color:#a6e22e">InsertOne</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">postPayload</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusCreated</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Posted Successfully&#34;</span>, <span style="color:#e6db74">&#34;Data&#34;</span>: <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#a6e22e">result</span>}},
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The most important thing you need to understand about this code is that <code>c.BindJSON(&quot;post&quot;)</code> is a &lsquo;JSONified&rsquo; model instance that calls each model field as postPayload; this goes into the database.</p>
+<p>Basically, remember that model we defined before? We use that to shape our request. This is the entire crux of the api we are building. It allows us to help the DB and request sender communicate with each other.</p>
+<h1 id="read-endpoint">Read endpoint</h1>
+<p>This is the code for the <code>READ</code> endpoint. This is done via a <code>GET</code> request.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">routes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">getCollection</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/Collection&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">database</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/databases&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">model</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/model&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson/primitive&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ReadOnePost</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DB</span> = <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ConnectDB</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">postCollection</span> = <span style="color:#a6e22e">getCollection</span>.<span style="color:#a6e22e">GetCollection</span>(<span style="color:#a6e22e">DB</span>, <span style="color:#e6db74">&#34;Posts&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">postId</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Param</span>(<span style="color:#e6db74">&#34;postId&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Post</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">objId</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">ObjectIDFromHex</span>(<span style="color:#a6e22e">postId</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">postCollection</span>.<span style="color:#a6e22e">FindOne</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">bson</span>.<span style="color:#a6e22e">M</span>{<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#a6e22e">objId</span>}).<span style="color:#a6e22e">Decode</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">result</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#a6e22e">result</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusCreated</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Success!&#34;</span>, <span style="color:#e6db74">&#34;Data&#34;</span>: <span style="color:#a6e22e">res</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>postId</code> variable is a parameter declaration(these are also called query strings). It gets a document&rsquo;s object ID as <code>objId</code> as shown in the line</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">objId</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">ObjectIDFromHex</span>(<span style="color:#a6e22e">postId</span>)
+</span></span></code></pre></div><h1 id="update-endpoint">Update endpoint</h1>
+<p>Now its time to use a <code>PUT</code> request. This is similar to how we created an entry in our DB. This time we update an existing entry using its unique object ID using our <code>PUT</code> request.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">routes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">getcollection</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/Collection&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">database</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/databases&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">model</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/model&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson/primitive&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">UpdatePost</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DB</span> = <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ConnectDB</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">postCollection</span> = <span style="color:#a6e22e">getcollection</span>.<span style="color:#a6e22e">GetCollection</span>(<span style="color:#a6e22e">DB</span>, <span style="color:#e6db74">&#34;Post&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">postId</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Param</span>(<span style="color:#e6db74">&#34;postId&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">post</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">Post</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">objId</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">ObjectIDFromHex</span>(<span style="color:#a6e22e">postId</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">BindJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">post</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">edited</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bson</span>.<span style="color:#a6e22e">M</span>{<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">Title</span>, <span style="color:#e6db74">&#34;article&#34;</span>: <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">Article</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">postCollection</span>.<span style="color:#a6e22e">UpdateOne</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">bson</span>.<span style="color:#a6e22e">M</span>{<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#a6e22e">objId</span>}, <span style="color:#a6e22e">bson</span>.<span style="color:#a6e22e">M</span>{<span style="color:#e6db74">&#34;$set&#34;</span>: <span style="color:#a6e22e">edited</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#a6e22e">result</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">MatchedCount</span> &lt; <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Data doesn&#39;t exist&#34;</span>})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusCreated</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;data updated!&#34;</span>, <span style="color:#e6db74">&#34;Data&#34;</span>: <span style="color:#a6e22e">res</span>})
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A JSON format of the model instance (which is post here) calls each model field from the database. The result variable uses the MongoDB $set operator to update a required document called by its object ID.</p>
+<p>The <code>result.MatchedCount</code> condition prevents the code from running if there&rsquo;s no record in the database or the passed ID is invalid.</p>
+<h1 id="delete-endpoint">Delete endpoint</h1>
+<p>Finally we have the delete endpoint. It removes an entry based on object ID passed as URL parameter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">routes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;context&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">getcollection</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/Collection&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">database</span> <span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/databases&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/bson/primitive&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DeletePost</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">cancel</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">WithTimeout</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DB</span> = <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ConnectDB</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">postId</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Param</span>(<span style="color:#e6db74">&#34;postId&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">postCollection</span> = <span style="color:#a6e22e">getcollection</span>.<span style="color:#a6e22e">GetCollection</span>(<span style="color:#a6e22e">DB</span>, <span style="color:#e6db74">&#34;Posts&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cancel</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">objId</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">primitive</span>.<span style="color:#a6e22e">ObjectIDFromHex</span>(<span style="color:#a6e22e">postId</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">postCollection</span>.<span style="color:#a6e22e">DeleteOne</span>(<span style="color:#a6e22e">ctx</span>, <span style="color:#a6e22e">bson</span>.<span style="color:#a6e22e">M</span>{<span style="color:#e6db74">&#34;id&#34;</span>: <span style="color:#a6e22e">objId</span>})
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#a6e22e">result</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">err</span>})
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusInternalServerError</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;No data to delete&#34;</span>})
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusCreated</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Article deleted successfully&#34;</span>, <span style="color:#e6db74">&#34;Data&#34;</span>: <span style="color:#a6e22e">res</span>})
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This code deletes a record using the <code>DeleteOne</code> function. The result.DeletedCount property helps us check if the DB is empty or requested object ID is invalid.</p>
+<h1 id="creating-the-api-runner-file">Creating the API runner file</h1>
+<p>Now in <code>main.go</code> add the following code. This will handle the router execution for each endpoint.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/sid-008/monGoCRUD/routes&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">routes</span>.<span style="color:#a6e22e">CreatePost</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/getOne/:postId&#34;</span>, <span style="color:#a6e22e">routes</span>.<span style="color:#a6e22e">ReadOnePost</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">PUT</span>(<span style="color:#e6db74">&#34;/update/:postId&#34;</span>, <span style="color:#a6e22e">routes</span>.<span style="color:#a6e22e">UpdatePost</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">DELETE</span>(<span style="color:#e6db74">&#34;/delete/:postId&#34;</span>, <span style="color:#a6e22e">routes</span>.<span style="color:#a6e22e">DeletePost</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;localhost: 3000&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now you can run the server by typing the following command in your project root</p>
+<pre tabindex="0"><code>$ go run main.go
+</code></pre><p>There you have it! A fully working mongoDB + Go CRUD API</p>
+<p>You can test the API using the curl command, postman or insomnia.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>I use arch btw</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

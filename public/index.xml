@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating a CRUD API with Go and MongoDB</title>
+      <link>/tech/mongocrud/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/mongocrud/</guid>
+      <description>Setup A CRUD API or a Create-Read-Update-Delete API is one of the first steps you take in your journey exploring the world of backend development.
+Get started with Golang by installing it on your computer if you haven’t already done so.
+This tutorial will require some basic knowledge of golang.
+Next we will install the packages needed for creating the CRUD API. We&amp;rsquo;ll be using Gin Gonic to route the API endpoints.</description>
+    </item>
+    
+    <item>
+      <title>Iran-Contra Affair</title>
+      <link>/articles/irancontra/</link>
+      <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/articles/irancontra/</guid>
+      <description>Iran Contra Affair The sale of arms to Iran, hostage exchanges(supposed), hezbollah and the civil war in Nicaragua. How are all these related? Well its a long story.
+In simple terms; during the second Reagan term, senior administration officials secretly facilitated the sales of weapons to Iran which at the time was under an arms embargo, and diverted the profits to the Contras, a group of anti-socialist rebels in Nicaragua that were opposed to the socialist Sandinista led government.</description>
+    </item>
+    
+  </channel>
+</rss>
