@@ -1,6 +1,6 @@
 ---
 title: Creating a CRUD API with Go and MongoDB
-date: 2023/1/18
+date: 2023-03-20
 description: Learn how to create a quick and easy CRUD API
 ---
 
@@ -45,11 +45,11 @@ This is what your project directory should look like.
 # Connecting MongoDB to Go
 All you need is your local mongoDB URI to connect to your DB. It typically looks a little like this:
 
-``` 
+```go 
 Mongo_URI = "mongodb://127.0.0.1:27017"
 ```
 Or
-```
+```go
  Mongo_URL = "mongodb://localhost:27017"
 ```
 
@@ -102,7 +102,7 @@ Make a new folder, called Collection in your project root. Now create a new Go f
 
 This will be short.
 
-```
+```go
 package getcollection
 
 import "go.mongodb.org/mongo-driver/mongo"
@@ -124,7 +124,7 @@ So here its returning the collection "Post" from "DB1".
 Make the model folder in project root. Create a file named model.go in it.
 Your model in this case is a blog post with its title.
 
-```
+```go
 package model
 
 import "go.mongodb.org/mongo-driver/bson/primitive"
@@ -153,7 +153,7 @@ routes
 
 # CREATE endpoint
 Creation of an entry in the DB is done by a `POST` request. We could say that we are quite literally posting a request to our DB. 
-```
+```go
 package routes
 
 import (
@@ -212,7 +212,7 @@ Basically, remember that model we defined before? We use that to shape our reque
 # Read endpoint
 This is the code for the `READ` endpoint. This is done via a `GET` request.
 
-```
+```go
 package routes
 
 import (
@@ -256,7 +256,7 @@ func ReadOnePost(c *gin.Context) {
 
 The `postId` variable is a parameter declaration(these are also called query strings). It gets a document's object ID as `objId` as shown in the line
 
-```
+```go
 objId, _ := primitive.ObjectIDFromHex(postId)
 ```
 
@@ -264,7 +264,7 @@ objId, _ := primitive.ObjectIDFromHex(postId)
 
 Now its time to use a `PUT` request. This is similar to how we created an entry in our DB. This time we update an existing entry using its unique object ID using our `PUT` request.
 
-```
+```go
 package routes
 
 import (
@@ -324,7 +324,7 @@ The `result.MatchedCount` condition prevents the code from running if there's no
 # Delete endpoint
 Finally we have the delete endpoint. It removes an entry based on object ID passed as URL parameter
 
-```
+```go
 package routes
 
 import (
@@ -366,7 +366,7 @@ This code deletes a record using the `DeleteOne` function. The result.DeletedCou
 # Creating the API runner file
 Now in `main.go` add the following code. This will handle the router execution for each endpoint.
 
-```
+```go
 package main
 
 import (
@@ -397,7 +397,7 @@ func main() {
 Now you can run the server by typing the following command in your project root
 
 ```
-go run main.go
+$ go run main.go
 ```
 
 There you have it! A fully working mongoDB + Go CRUD API

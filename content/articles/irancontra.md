@@ -1,5 +1,9 @@
 ---
 title: Iran-Contra Affair
+date: 2023-01-18
+description: I am become International relations expert.
+tag: International relations
+author: You
 ---
 
 # Iran Contra Affair
