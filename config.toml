@@ -18,22 +18,25 @@ footerHtml = 'I use arch btw'
 key = 0
 name = "Github"
 url = "https://github.com/sid-008"
-#icon = "fa-brands fa-github"  # Add link to your icon font to `layouts/partials/custom-head.html`
+icon = "fa fa-github fa-2x"  # Add link to your icon font to `layouts/partials/custom-head.html`
 
 [[params.social]]
 key = 1
 name = "Twitter"
 url = "https://twitter.com/sidT_008"
+icon = "fa fa-twitter fa-2x"
 
 [[params.social]]
 key = 2
 name = "Linkedin"
 url = "https://www.linkedin.com/in/siddharth-tewari-40a758221/"
+icon = "fa fa-linkedin fa-2x"
 
 [[params.social]]
 key = 3
 name = "Email"
 url = "mailto:siddharthtewari14@gmail.com"
+icon = "fa fa-envelope fa-2x"
 
 [menu]
   [[menu.header]]
@@ -55,3 +58,9 @@ url = "mailto:siddharthtewari14@gmail.com"
     name = "articles"
     weight = 4
     url = "/articles"
+
+
+
+[taxonomies]
+  tag = 'tags'
+
