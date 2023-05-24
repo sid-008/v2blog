@@ -6,6 +6,8 @@ tag: International relations
 author: You
 ---
 
+(This was originally published [here](https://munsocecc.vercel.app/posts/iran_contra_affair), check out PESU-ECC's MUNSOC site and show them some love!)
+
 # Iran Contra Affair
 
 The sale of arms to Iran, hostage exchanges(supposed), hezbollah and the civil war in Nicaragua. How are all these related? Well its a long story.
