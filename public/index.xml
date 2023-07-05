@@ -6,7 +6,16 @@
     <description>Recent content on Sid T</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes from the serverless wasm meetup</title>
+      <link>/tech/serverlesswasm/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/serverlesswasm/</guid>
+      <description>Matt Bucher Made helm, ex microsoft, kubernetes early days contributor great guy Definition of Serverless: Pattern in which the dev does not write a server process(sockets or daemons), entry point is an event handler Deus, open source competitor to heroku PaaS Explored kubernetes there, ms accquires deus, built AKS there Had to write new dockerfiles and images for diff images and OSs VMs big workhorse of the cloud Most functions as a service are built as a VM, supposed to be super fast, but was built on tech too bloated VM package the entire OS, serveral minutes to start Containers easier to use than VMs, dockerfiles good, dev exp for containers was great.</description>
+    </item>
+    
     <item>
       <title>A brief history of init systems</title>
       <link>/tech/init/</link>

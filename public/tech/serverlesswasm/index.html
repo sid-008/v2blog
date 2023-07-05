@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Notes from the serverless wasm meetup | Siddharth Tewari
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.112.3">
+
+
+<link rel="canonical" href="/tech/serverlesswasm/" >
+<link href="/sass/main.min.a8be33730f01e46b6e968a84ed6b211a9d1286d34f7e143c012da9c14cd56400.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">sid@localhost ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+                <li>
+                    <a href="/tech" title="" >
+                        ~/tech</a>
+                </li>
+                
+                <li>
+                    <a href="/articles" title="" >
+                        ~/articles</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Notes from the serverless wasm meetup</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2023-06-10">June 10, 2023</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <h2 id="matt-bucher">Matt Bucher</h2>
+<ul>
+<li>Made helm, ex microsoft, kubernetes early days contributor great guy</li>
+</ul>
+<h1 id="definition-of-serverless">Definition of Serverless:</h1>
+<ul>
+<li>Pattern in which the dev does not write a server process(sockets or daemons), entry point is an event handler</li>
+<li>Deus, open source competitor to heroku PaaS</li>
+<li>Explored kubernetes there, ms accquires deus, built AKS there</li>
+<li>Had to write new dockerfiles and images for diff images and OSs</li>
+<li>VMs big workhorse of the cloud</li>
+<li>Most functions as a service are built as a VM, supposed to be super fast, but was built on tech too bloated</li>
+<li>VM package the entire OS, serveral minutes to start</li>
+<li>Containers easier to use than VMs, dockerfiles good, dev exp for containers was great. Took 10-20 sec always less than a min</li>
+<li>Made no sense to have a shortlived process, but wait for 10-20 secs</li>
+<li>Functions:
+<ul>
+<li>Event handler function love</li>
+<li>Too slow(200 msec)</li>
+<li>Fixed OS and Arch -&gt; serverless?</li>
+<li>Difficult dev experience</li>
+</ul>
+</li>
+</ul>
+<h1 id="motivation-at-fermyon">Motivation at fermyon:</h1>
+<ul>
+<li>Want fast start times</li>
+<li>Don&rsquo;t need to know about OS and arc</li>
+<li>Fermyon Spin: 52ms, AWS lambda 250ms</li>
+<li>If you hit the 100ms threshold to load a page SEO penalties</li>
+<li>AWS cappin sayin 200-500ms was good</li>
+<li>To hit good page speed, you&rsquo;d have to focus a lot on optimisation and stuff</li>
+<li>WASM: near native start times</li>
+<li>See, google page speed ranking</li>
+<li>spin cold starts are like 1ms</li>
+</ul>
+<h1 id="wasm">WASM:</h1>
+<ul>
+<li>What is wasm? Its just another bytecode format that is platfrom and arch independent</li>
+<li>Designed so that in low power environments it can run as interpreted</li>
+<li>You can run it in JIT mode</li>
+<li>Make it execute at native speed</li>
+<li>Pre initilisation when js is used. Shaved off time doing this</li>
+<li>Mozilla putting scenes with wasm</li>
+<li>They did development in the open</li>
+<li>Cross browser support straight away</li>
+<li>People involved in standardising js were involved with wasm</li>
+<li>Ruby was supposed to be a shell like language, but then ruby on rails came out</li>
+</ul>
+<h1 id="wasm-strengths">WASM strengths:</h1>
+<ul>
+<li>Security sandboxing</li>
+<li>Cross platform and cross architecture</li>
+<li>Fast</li>
+<li>Ideally supports compile to all languages</li>
+<li>Containers weaker because of shared kernel, wasm has much tighter security, it restricts access to sys calls</li>
+</ul>
+<h1 id="use-cases">Use cases:</h1>
+<ul>
+<li>
+<p>BBC and amazon wrote their players on wasm, they have articles check it out</p>
+</li>
+<li>
+<p>With WASM you can pick the app you like! It takes communities to make WASM successful, compiler and toolchain of each lang needs to do it</p>
+</li>
+<li>
+<p>Mozilla gambled big with wasm, check redmonk to see wasm support rankings.</p>
+</li>
+</ul>
+<h1 id="scripting-vs-compiled">Scripting vs compiled:</h1>
+<ul>
+<li>Scripting needs to be interpreted. Approach was to compile the interpreter itself</li>
+<li>Compile interpreter itself into wasm</li>
+</ul>
+<h4 id="bombardier-load-test-command">Bombardier Load test command</h4>
+<ul>
+<li>every single request runs in an isolated sandbox</li>
+<li>every single request has its own memory address</li>
+<li>Less than ms performance</li>
+<li>Once you&rsquo;ve built that wasm module you can run it anywhere, entirely isolated, near native performance</li>
+<li>visit kwasm.sh</li>
+</ul>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>I use arch btw</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
