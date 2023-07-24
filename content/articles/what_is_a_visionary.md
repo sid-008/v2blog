@@ -1,7 +1,7 @@
 ---
 title: What is a visionary?
 date: 2023-07-24
-description: So what exactly is a visionary?
+description: So what exactly makes someone a visionary?
 tag: Ramblings
 author: You
 ---
