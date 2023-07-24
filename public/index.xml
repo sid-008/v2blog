@@ -6,7 +6,17 @@
     <description>Recent content on Sid T</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is a visionary?</title>
+      <link>/articles/what_is_a_visionary/</link>
+      <pubDate>Mon, 24 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/articles/what_is_a_visionary/</guid>
+      <description>What is a visionary? When I was first asked this question in my CIE L1 course(A wonderful course offered by my university on entrepreneurship) it made me think. My immediate first thought was: Steve Jobs. But it didn&amp;rsquo;t answer the question of what a visionary person really is. This post is meant to be a reflection on this question.
+I&amp;rsquo;ve asked various people on their thoughts regarding this, along with the answers I listened to in class, most people tend to use words like &amp;ldquo;future&amp;rdquo;, &amp;ldquo;ideas&amp;rdquo;, &amp;ldquo;innovation&amp;rdquo;.</description>
+    </item>
+    
     <item>
       <title>Notes from the serverless wasm meetup</title>
       <link>/tech/serverlesswasm/</link>
