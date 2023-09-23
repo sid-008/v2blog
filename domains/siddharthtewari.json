@@ -6,6 +6,6 @@
     "email": "siddharthtewari14gmail.com"
   },
   "record": {
-    "CNAME": "sid-008.github.io/v2blog"
+    "A": ["217.174.245.249"]
   }
 }
