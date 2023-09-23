@@ -1,0 +1,12 @@
+{
+  "description": "Personal site",
+  "repo": "https://github.com/sid-008/v2blog",
+  "owner": {
+    "username": "sid-008",
+    "email": "siddharthtewari14gmail.com",
+    "twitter": "sidT_008"
+  },
+  "record": {
+    "CNAME": "sid-008.github.io"
+  }
+}
