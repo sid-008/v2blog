@@ -3,10 +3,9 @@
   "repo": "https://github.com/sid-008/v2blog",
   "owner": {
     "username": "sid-008",
-    "email": "siddharthtewari14gmail.com",
-    "twitter": "sidT_008"
+    "email": "siddharthtewari14gmail.com"
   },
   "record": {
-    "CNAME": "sid-008.github.io"
+    "URL": "sid-008.github.io/v2blog"
   }
 }
