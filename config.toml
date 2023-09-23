@@ -64,4 +64,3 @@ icon = "fa fa-envelope fa-2x"
 [taxonomies]
   tag = 'tags'
 
-canonifyURLs = true
