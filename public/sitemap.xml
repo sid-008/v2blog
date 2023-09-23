@@ -32,5 +32,7 @@
     <loc>/about/</loc>
   </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/true/</loc>
   </url>
 </urlset>
