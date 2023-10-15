@@ -4,8 +4,7 @@ Title: About me
 
 ### Hello there!
 
-Hey, I'm Siddharth! This is my personal blog where I post about pretty much all the stuff I find cool. I also occassionally write about
-geopolitics/world history, and various other random things.
+Hey, I'm Siddharth! This is my internet home!
 
 ### What I use
 
