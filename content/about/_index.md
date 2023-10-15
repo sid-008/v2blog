@@ -4,7 +4,7 @@ Title: About me
 
 ### Hello there!
 
-Hey, I'm Siddharth! This is my internet home!
+Hey, I'm Siddharth! This is my home on the internet!
 
 ### What I use
 
