@@ -45,8 +45,13 @@ icon = "fa fa-envelope fa-2x"
     url = "/"
 
   [[menu.header]]
-    name = "tech"
+    name = "linkstash"
     weight = 3
+    url = "/linkstash"
+
+  [[menu.header]]
+    name = "tech"
+    weight = 4
     url = "/tech"
 
   [[menu.header]]
@@ -56,7 +61,7 @@ icon = "fa fa-envelope fa-2x"
 
   [[menu.header]]
     name = "articles"
-    weight = 4
+    weight = 5
     url = "/articles"
 
 
