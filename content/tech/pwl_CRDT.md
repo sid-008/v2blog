@@ -23,9 +23,9 @@ The paper discussed was "Keep CALM and CRDT on!"
 - Coordination avoidance in db systems [paper]
 - Anna: a kvs for any scale [paper]
 
-# Can we avoid coordination
+# Can we avoid coordination?
 
-- A significant amount of non-determinism exist in dist sys.
+- A significant amount of non-determinism exists in dist sys.
 - uncoordinated parallel exec on unreliable machines, message order delivery, network partitions etc
 - In an attempt to tame non-determinism we try and Coordinate and accumulate as much Knowledge about what the global system might look like
 - Coordination done in hope of some sort of guarantees.
