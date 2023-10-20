@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Notes from the PWL October meetup | Siddharth Tewari
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.118.2">
+
+
+<link rel="canonical" href="/tech/pwl_crdt/" >
+<link href="/sass/main.min.a8be33730f01e46b6e968a84ed6b211a9d1286d34f7e143c012da9c14cd56400.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">sid@localhost ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+                <li>
+                    <a href="/linkstash" title="" >
+                        ~/linkstash</a>
+                </li>
+                
+                <li>
+                    <a href="/tech" title="" >
+                        ~/tech</a>
+                </li>
+                
+                <li>
+                    <a href="/articles" title="" >
+                        ~/articles</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Notes from the PWL October meetup</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2023-10-19">October 19, 2023</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>5 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>These are my notes from the October Papers We Love meetup hosted by Madhav Jivrajani.
+The paper discussed was &ldquo;Keep CALM and CRDT on!&rdquo;</p>
+<h1 id="what-is-coordination">What is coordination</h1>
+<ul>
+<li>&ldquo;Knowledge is the dual of possibility&rdquo;</li>
+<li>There&rsquo;s also message re-ordering, network partitions and all other flavours of why dist sys is hard.</li>
+<li>Other mechanisms like 2PC(2 phase commit) exist.</li>
+<li>coordination mechanisms are a way to sync access to a shared memory of some sort. Probably the most well studied class of algos in dist sys literature</li>
+<li>Coord mechanims have massive performance costs attached to them.</li>
+<li>Intuition from universal scalability law(USL)</li>
+<li>Linear scalability is a scam</li>
+<li>As work is done to achieve data consistency, it starts to bottleneck your system&rsquo;s throughput.</li>
+</ul>
+<h1 id="downside-of-coordination">Downside of coordination</h1>
+<ul>
+<li>Coordination avoidance in db systems [paper]</li>
+<li>Anna: a kvs for any scale [paper]</li>
+</ul>
+<h1 id="can-we-avoid-coordination">Can we avoid coordination</h1>
+<ul>
+<li>
+<p>A significant amount of non-determinism exist in dist sys.</p>
+</li>
+<li>
+<p>uncoordinated parallel exec on unreliable machines, message order delivery, network partitions etc</p>
+</li>
+<li>
+<p>In an attempt to tame non-determinism we try and Coordinate and accumulate as much Knowledge about what the global system might look like</p>
+</li>
+<li>
+<p>Coordination done in hope of some sort of guarantees.</p>
+<ul>
+<li>Recency guarantees</li>
+<li>Ordering guarantees</li>
+</ul>
+</li>
+<li>
+<p>One way to avoid coordination in txn dbs is using invariants. If a local transaction can be shown to not violate a golabl invariant we can avoid coodinating on this txn</p>
+</li>
+<li>
+<p>Invarant confluence</p>
+</li>
+<li>
+<p>But this is just for transactional dbs, how do we generalise more?</p>
+</li>
+<li>
+<p>Ultimately coordination is to achieve memory consistency</p>
+</li>
+<li>
+<p>Mem consistency is violated by all the non-determinism</p>
+</li>
+<li>
+<p>What if we shift our focus from memory consistency to something called application level consistency?</p>
+</li>
+<li>
+<p>Can our program produce deterministic outputs despite non-determinism in the distributed runtime?</p>
+</li>
+<li>
+<p>This is: program confluence</p>
+</li>
+<li>
+<p>Clarification: avoiding coordination does not mean machines do not talk to each other</p>
+</li>
+<li>
+<p>Machines communicate periodically, kind of like gossip</p>
+</li>
+<li>
+<p>For each request, a blocking potentially sequential, throughtput reducing operations are not done.</p>
+</li>
+</ul>
+<h3 id="example-1---distributed-deadlock-detection">Example-1 - distributed deadlock detection</h3>
+<ul>
+<li>Refer CALM paper</li>
+<li>As and when local cycles develop, can a local deadlock detector confidently declare a deadlock?</li>
+<li>Turns out, it can! But what about race conditions? Do you need to coodinate with other nodes before declaring a deadlock?</li>
+<li>No need to coordinate, any decision based on partial/local state is still valid. Partial information is kind of an under approx of the global state.</li>
+</ul>
+<h3 id="example-2-distributed-garbage-collection">Example-2 distributed garbage collection</h3>
+<ul>
+<li>Goal is to find objects that are disconnected from the &ldquo;root&rdquo;.</li>
+<li>May be that on another node the object is connected to the root transitively.</li>
+<li>The local case in this case is not an under approximation of the global state.</li>
+</ul>
+<h1 id="calm">CALM</h1>
+<ul>
+<li>consistency as logical monotonicity.</li>
+<li>A program has a consistent, coordination free distributed implementation if and only if it is monotonic.</li>
+<li>True from a philosophical pov, (see: non-monotonic logic)</li>
+<li>Formal definition: -DO-</li>
+<li>Need for coordination arises from an intrinsic need to gather missing info.</li>
+<li>As a result monotonic programs are safe in the face of missing info. The oppposite is not true however.</li>
+<li>non-monotonic programs on the other hand tend to &ldquo;change their mind&rdquo; in the face of new info. They need to ensure that they know the global state before taking any decisions.</li>
+</ul>
+<h1 id="crdts">CRDTs</h1>
+<ul>
+<li>conflict free replicated datatypes.</li>
+<li>Replicated structures that provide guarantees to be eventually consistent without the need for coordination</li>
+<li>These gossip(either data or logs) among each other</li>
+<li>Keyword: gossip</li>
+<li>ACI: associative, commutative, Idempotent</li>
+<li>Look into hasse diagrams- this shows how CRDTs can be monotonic, it can only grow up/down(see: cardinality counter)</li>
+<li>Helps deadl with non-determinism that comes with eventually consistent systems: re-ordering, duplication, late-arriving updates - ACI merge function handles that!</li>
+<li>A promise of formal safety guarantees(eventual consistency)</li>
+</ul>
+<h2 id="a-few-gotchas">A few gotchas</h2>
+<p>&ldquo;Guaranteed to converge, all replicas are eventually consistent&rdquo;</p>
+<ul>
+<li>This is a storage guarantee, state readers might get stale reads</li>
+<li>Cannot achieve sequential consistency without coordination</li>
+<li>Deletions from a set violate monotonicity, so how about a grow only set for just deletions?</li>
+<li>NO guarantees for safety when reading state. It gives guarantees for liveness.</li>
+<li>CRDTs provide schrodinger consistency guarantees</li>
+<li>Reads usually do not commute with other operations</li>
+<li>The reason reads do not commute is because the output of our read is not stable</li>
+<li>Because we need to sync access again, we end up back in coordination land</li>
+<li>In other words, without coordination we output not just stale but false info to our state readers.</li>
+</ul>
+<h1 id="keep-calm-and-crdt-on">Keep CALM and CRDT on</h1>
+<ul>
+<li>Can we develop a query model that makes it possible to precisely define when execution on a single replica yields consistent results?</li>
+<li>What all do we want?
+<ul>
+<li>Safety - sequential consistency</li>
+<li>Efficiency</li>
+<li>Simplicity</li>
+</ul>
+</li>
+<li>Executing the query on local replica will always produce a sequential consistent result</li>
+<li>The true value of a query can never be changed once observed.</li>
+<li>Local state + some updates = global state</li>
+<li>Most importantly: you might read stale info but never wrong info.</li>
+<li>CALM was originally framed for logic programs.</li>
+<li>It applies perfectly well to CRDTs as well.</li>
+<li>We can deifine a monotone query as any whose output is monotone with respect to ordering of the CRDT.</li>
+<li>Monotone queries are exactly the queries that only need a local view of the system to be correct.</li>
+<li>CALMS says that only monotone queries that can satisfy this criteria of coordination avoidance.</li>
+<li>Monotone queries meet all criteria of our good query model.</li>
+<li>(look into PBS{probabistic Bounded staleness})</li>
+</ul>
+<h2 id="what-about-non-monotone-queries">what about non monotone queries?</h2>
+<ul>
+<li>Not all business logic can be expressed monotonically</li>
+<li>Answer is simple- Coordinate!</li>
+<li>Here as well we can improve on coordination</li>
+<li>ALl update operations commute, you need to order sets of updates not sequences of them</li>
+<li>Contrast with paxos or raft, which enforces everyone, everywhere sees the same order no matter what.</li>
+</ul>
+<h4 id="tldr-safe-if-monotone-unsafe-if-not-monotone">TLDR; safe if monotone, unsafe if not monotone.</h4>
+<h1 id="what-is-the-next-step">What is the next step?</h1>
+<ul>
+<li>Need to map query model to a practical language</li>
+<li>Need a rich expression that can manipulate CRDT state(lattice structure)</li>
+<li>Syntax that is easily understood</li>
+<li>Something along the lines of SQL</li>
+<li>With a query model and language, queries are just interfaces to the actual db</li>
+<li>Paper proposes a shift in perspective from an object oriented view of CRDTs to a db view of them;</li>
+<li>We break them up into a query model and a data store.</li>
+</ul>
+<h1 id="what-if-we-want-a-non-monotonic-query">what if we want a non-monotonic query?</h1>
+<ul>
+<li>&ldquo;pre-fetch&rdquo; and &ldquo;pre-coordinate&rdquo;</li>
+<li>Sometimes you might just want weakly consistent systems, don&rsquo;t bother with coordination then</li>
+<li>TODO</li>
+<li>Look into &ldquo;last write wins&rdquo;</li>
+</ul>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>I use arch btw</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

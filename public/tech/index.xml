@@ -6,7 +6,17 @@
     <description>Recent content in Tech on Sid T</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes from the PWL October meetup</title>
+      <link>/tech/pwl_crdt/</link>
+      <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/pwl_crdt/</guid>
+      <description>These are my notes from the October Papers We Love meetup hosted by Madhav Jivrajani. The paper discussed was &amp;ldquo;Keep CALM and CRDT on!&amp;rdquo;
+What is coordination &amp;ldquo;Knowledge is the dual of possibility&amp;rdquo; There&amp;rsquo;s also message re-ordering, network partitions and all other flavours of why dist sys is hard. Other mechanisms like 2PC(2 phase commit) exist. coordination mechanisms are a way to sync access to a shared memory of some sort.</description>
+    </item>
+    
     <item>
       <title>Notes from the serverless wasm meetup</title>
       <link>/tech/serverlesswasm/</link>
