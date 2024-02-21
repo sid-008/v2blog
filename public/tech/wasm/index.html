@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+wasm and emscripten | Siddharth Tewari
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.122.0">
+
+
+<link rel="canonical" href="/tech/wasm/" >
+<link href="/sass/main.min.a8be33730f01e46b6e968a84ed6b211a9d1286d34f7e143c012da9c14cd56400.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">sid@localhost ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu"/>
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+                <li>
+                    <a href="/linkstash" title="" >
+                        ~/linkstash</a>
+                </li>
+                
+                <li>
+                    <a href="/tech" title="" >
+                        ~/tech</a>
+                </li>
+                
+                <li>
+                    <a href="/articles" title="" >
+                        ~/articles</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>wasm and emscripten</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-02-21">February 21, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>3 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <h1 id="a-brief-history-of-cloud-computing-and-virtualisation">A brief history of cloud computing and virtualisation</h1>
+<p>The cloud has often been simply described as “someone else’s computer”.
+Back in the old days of yore, people would have to setup and manage their own hardware infrastructure and servers.</p>
+<p>This was quite a hassle and also quite expensive.
+Cloud computing evolved as a solution to this issue.
+People no longer had to buy, maintain, manage or setup their own hardware.
+It worked out to be cheaper too, since people could pay only for the resources they used.</p>
+<img src="/wasm1.png" alt="wasm1.png" width="800" align="center">
+<p>This gave rise to various virtualisation technologies like docker and in the 2010s
+the adoption of cloud native tech was on the rise.</p>
+<h1 id="what-is-webassembly">What is WebAssembly?</h1>
+<ul>
+<li>WASM or WebAssembly is is a binary instruction format for a stack-based virtual machine.</li>
+<li>Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.</li>
+<li>WASM has multiple embedding interfaces including: JavaScript APIs, Web APIS, and the WASI API.</li>
+</ul>
+<img src="/wasm2.png" alt="wasm2.png" width="800" align="center">
+<h1 id="why-wasm">Why WASM?</h1>
+<ul>
+<li>The binary format for WebAssembly can be natively decoded much faster than JavaScript can be parsed (experiments show more than 20× faster). On mobile, large compiled codes can easily take 20–40 seconds just to parse, so native decoding provides a better user experience.</li>
+<li>But asm.js already exists?(asm.js is a subset of js designed to allow languages such as C to be run as web apps)</li>
+<li>By avoiding the simultaneous asm.js constraints of AOT-compilability and good performance even on engines without specific asm.js optimizations, a new standard makes it much easier to add the features required to reach native levels of performance.</li>
+<li>asm.js is essentially just regular js but with AOT compilation and a few other bells and whistles.</li>
+<li>WASM app sizes are also much smaller compared to regular app images.</li>
+</ul>
+<img src="/wasm3.png" alt="wasm3.png" width="800" align="center">
+<h1 id="where-is-wasm">Where is WASM?</h1>
+<ul>
+<li><a href="https://madewithwebassembly.com/">Made with WebAssembly</a></li>
+<li><a href="https://www.figma.com/blog/webassembly-cut-figmas-load-time-by-3x/">WebAssembly cut Figma&rsquo;s load time by 3x</a></li>
+<li><a href="https://blog.chromium.org/2019/06/webassembly-brings-google-earth-to-more.html">WebAssembly brings Google Earth to more browsers</a></li>
+<li>Fture work on non web embeddings with the advent of things like <a href="https://wasi.dev/">WASI</a></li>
+<li><a href="https://www.fermyon.com/">Fermyon</a></li>
+<li><a href="https://www.fermyon.com/serverless-ai">Fermyon Spin Serverless AI Inferencing with the spin framework</a></li>
+</ul>
+<h1 id="lets-get-coding">Lets get coding!</h1>
+<p>So what will we be using? Well, we&rsquo;ll be using:</p>
+<ul>
+<li><a href="https://emscripten.org/">Emscripten</a>: a compiler toolchain for WASM, used to compile C/C++ code(or any other lanugage that uses LLVM) to WASM.</li>
+<li><a href="https://www.raylib.com/">Raylib</a>: a cross-platform open-source software development library to create graphical applications and games.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>For Windows:</p>
+<ol>
+<li><code>git clone https://github.com/emscripten-core/emsdk</code>, or download the zip folder.</li>
+<li>cd into it and run .\emsdk install latest, and then .\emsdk activate latest</li>
+<li>every time you open a new cmd, you have to cd into the repo and run .\emsdk activate latest</li>
+<li>Verify that emcc is installed by running the emcc command.</li>
+</ol>
+<p>Make a new project folder for the workshop.</p>
+<p>Then, get raylib:</p>
+<ol>
+<li><a href="https://github.com/raysan5/raylib/releases/tag/5.0">Raylib-5-Release</a>: scroll all the way down and get the
+raylib-5.0_webassembly.zip or just download the one we sent(its the same thing)</li>
+<li>Extract the zip file into your project folder. Rename the extracted folder to raylib.</li>
+</ol>
+<p>For Linux:</p>
+<ol>
+<li><code>git clone https://github.com/emscripten-core/emsdk</code></li>
+<li>cd into it and run <code>./emsdk install latest</code>, and then <code>./emsdk activate latest</code></li>
+<li>Every time you open a new terminal window, you will have to cd into the repo and run <code>./emsdk activate latest</code></li>
+<li>Execute <code>source ./emsdk_env.sh</code></li>
+<li>Verify that emcc is installed by running the emcc command.</li>
+</ol>
+<p>Make a new project folder for the workshop.</p>
+<p>Then, get raylib:</p>
+<ol>
+<li><a href="https://github.com/raysan5/raylib/releases/tag/5.0">Raylib-5-Release</a>: scroll all the way down and get the
+raylib-5.0_webassembly.zip or just download the one we sent(its the same thing)</li>
+<li>Extract the zip file into your project folder. Rename the extracted folder to raylib.</li>
+</ol>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>I use arch btw</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

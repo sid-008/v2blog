@@ -6,8 +6,15 @@
     <description>Recent content in Tech on Sid T</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Feb 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wasm and emscripten</title>
+      <link>/tech/wasm/</link>
+      <pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>/tech/wasm/</guid>
+      <description>A brief history of cloud computing and virtualisation The cloud has often been simply described as “someone else’s computer”. Back in the old days of yore, people would have to setup and manage their own hardware infrastructure and servers.&#xA;This was quite a hassle and also quite expensive. Cloud computing evolved as a solution to this issue. People no longer had to buy, maintain, manage or setup their own hardware. It worked out to be cheaper too, since people could pay only for the resources they used.</description>
+    </item>
     <item>
       <title>Notes from the PWL October meetup</title>
       <link>/tech/pwl_crdt/</link>
