@@ -10,6 +10,7 @@ Just a collection of links to stuff that i think is cool or insightful.
 ## Currently Reading
 
 - On War -Karl Von Clausewitz
+- American Psycho(yes its a book too!)
 
 ## Essays
 
