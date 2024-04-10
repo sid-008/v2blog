@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2024-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/</loc>
+    <loc>//localhost:1313/tech/</loc>
     <lastmod>2024-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/wasm/</loc>
+    <loc>//localhost:1313/tech/wasm/</loc>
     <lastmod>2024-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/pwl_crdt/</loc>
+    <loc>//localhost:1313/tech/pwl_crdt/</loc>
     <lastmod>2023-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/articles/</loc>
+    <loc>//localhost:1313/articles/</loc>
     <lastmod>2023-09-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/articles/communities/</loc>
+    <loc>//localhost:1313/articles/communities/</loc>
     <lastmod>2023-09-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/articles/what_is_a_visionary/</loc>
+    <loc>//localhost:1313/articles/what_is_a_visionary/</loc>
     <lastmod>2023-07-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/serverlesswasm/</loc>
+    <loc>//localhost:1313/tech/serverlesswasm/</loc>
     <lastmod>2023-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/init/</loc>
+    <loc>//localhost:1313/tech/init/</loc>
     <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tech/mongocrud/</loc>
+    <loc>//localhost:1313/tech/mongocrud/</loc>
     <lastmod>2023-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/articles/irancontra/</loc>
+    <loc>//localhost:1313/articles/irancontra/</loc>
     <lastmod>2023-01-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
+    <loc>//localhost:1313/about/</loc>
   </url><url>
-    <loc>/linkstash/</loc>
+    <loc>//localhost:1313/linkstash/</loc>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/tags/</loc>
   </url>
 </urlset>
