@@ -17,3 +17,4 @@ Just a collection of links to stuff that i think is cool or insightful.
 A few essays that I like a lot
 
 - [Working with the garage door up - Andy Matuschak](https://notes.andymatuschak.org/Work_with_the_garage_door_up)
+- 
