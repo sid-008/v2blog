@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on Sid T</title>
-    <link>//localhost:1313/articles/</link>
+    <link>/articles/</link>
     <description>Recent content in Articles on Sid T</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/articles/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How do you build a community?</title>
-      <link>//localhost:1313/articles/communities/</link>
+      <link>/articles/communities/</link>
       <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/articles/communities/</guid>
+      <guid>/articles/communities/</guid>
       <description>So what is a community? In one word? Its home. For me at least, Hackerspace PESU-ECC&amp;rsquo;s Mentor team, GDSC PESU-ECC &amp;lsquo;22 and ACM PESU-ECC had been my &amp;ldquo;Home&amp;rdquo; for quite a while. The relentless memes. The insanely enlightening conversations. Learning from almost everyone there. The banter, the inside jokes, everything on that little whatsapp group was fun. It felt like &amp;ldquo;my people&amp;rdquo; and I&amp;rsquo;d often call it home.&#xA;But how do you build such a community?</description>
     </item>
     <item>
       <title>What is a visionary?</title>
-      <link>//localhost:1313/articles/what_is_a_visionary/</link>
+      <link>/articles/what_is_a_visionary/</link>
       <pubDate>Mon, 24 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/articles/what_is_a_visionary/</guid>
+      <guid>/articles/what_is_a_visionary/</guid>
       <description>What is a visionary? When I was first asked this question in my CIE L1 course(A wonderful course offered by my university on entrepreneurship) it made me think. My immediate first thought was: Steve Jobs. But it didn&amp;rsquo;t answer the question of what a visionary person really is. This post is meant to be a reflection on this question.&#xA;I&amp;rsquo;ve asked various people on their thoughts regarding this, along with the answers I listened to in class, most people tend to use words like &amp;ldquo;future&amp;rdquo;, &amp;ldquo;ideas&amp;rdquo;, &amp;ldquo;innovation&amp;rdquo;.</description>
     </item>
     <item>
       <title>Iran-Contra Affair</title>
-      <link>//localhost:1313/articles/irancontra/</link>
+      <link>/articles/irancontra/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/articles/irancontra/</guid>
+      <guid>/articles/irancontra/</guid>
       <description>(This was originally published here, check out PESU-ECC&amp;rsquo;s MUNSOC site and show them some love!)&#xA;Iran Contra Affair The sale of arms to Iran, hostage exchanges(supposed), hezbollah and the civil war in Nicaragua. How are all these related? Well its a long story.&#xA;In simple terms; during the second Reagan term, senior administration officials secretly facilitated the sales of weapons to Iran which at the time was under an arms embargo, and diverted the profits to the Contras, a group of anti-socialist rebels in Nicaragua that were opposed to the socialist Sandinista led government.</description>
     </item>
   </channel>
