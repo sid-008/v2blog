@@ -2,45 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech on Sid T</title>
-    <link>//localhost:1313/tech/</link>
+    <link>/tech/</link>
     <description>Recent content in Tech on Sid T</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anatomy of a Wasm Runtime</title>
+      <link>/tech/blrsys_wasm/</link>
+      <pubDate>Sun, 25 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/tech/blrsys_wasm/</guid>
+      <description>This browser does not support PDFs. Please download the PDF to view it: Download PDF.</description>
+    </item>
     <item>
       <title>wasm and emscripten</title>
-      <link>//localhost:1313/tech/wasm/</link>
+      <link>/tech/wasm/</link>
       <pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tech/wasm/</guid>
+      <guid>/tech/wasm/</guid>
       <description>A brief history of cloud computing and virtualisation The cloud has often been simply described as “someone else’s computer”. Back in the old days of yore, people would have to setup and manage their own hardware infrastructure and servers.&#xA;This was quite a hassle and also quite expensive. Cloud computing evolved as a solution to this issue. People no longer had to buy, maintain, manage or setup their own hardware. It worked out to be cheaper too, since people could pay only for the resources they used.</description>
     </item>
     <item>
       <title>Notes from the PWL October meetup</title>
-      <link>//localhost:1313/tech/pwl_crdt/</link>
+      <link>/tech/pwl_crdt/</link>
       <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tech/pwl_crdt/</guid>
+      <guid>/tech/pwl_crdt/</guid>
       <description>These are my notes from the October Papers We Love meetup hosted by Madhav Jivrajani. The paper discussed was &amp;ldquo;Keep CALM and CRDT on!&amp;rdquo;&#xA;What is coordination &amp;ldquo;Knowledge is the dual of possibility&amp;rdquo; There&amp;rsquo;s also message re-ordering, network partitions and all other flavours of why dist sys is hard. Other mechanisms like 2PC(2 phase commit) exist. coordination mechanisms are a way to sync access to a shared memory of some sort.</description>
     </item>
     <item>
       <title>Notes from the serverless wasm meetup</title>
-      <link>//localhost:1313/tech/serverlesswasm/</link>
+      <link>/tech/serverlesswasm/</link>
       <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tech/serverlesswasm/</guid>
+      <guid>/tech/serverlesswasm/</guid>
       <description>Matt Bucher Made helm, ex microsoft, kubernetes early days contributor great guy Definition of Serverless: Pattern in which the dev does not write a server process(sockets or daemons), entry point is an event handler Deus, open source competitor to heroku PaaS Explored kubernetes there, ms accquires deus, built AKS there Had to write new dockerfiles and images for diff images and OSs VMs big workhorse of the cloud Most functions as a service are built as a VM, supposed to be super fast, but was built on tech too bloated VM package the entire OS, serveral minutes to start Containers easier to use than VMs, dockerfiles good, dev exp for containers was great.</description>
     </item>
     <item>
       <title>A brief history of init systems</title>
-      <link>//localhost:1313/tech/init/</link>
+      <link>/tech/init/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tech/init/</guid>
+      <guid>/tech/init/</guid>
       <description>Recently I had the chance to give a talk at the Razorpay office as a part of FOSS United Bangalore&amp;rsquo;s meetup. This was a full length talk and I had a great time talking to like minded people about this.&#xA;This itself is a pretty niche topic, but a lot of people aren&amp;rsquo;t really aware of the system-d feud, so I decided why not give a talk on it? The material I used for the talk is below.</description>
     </item>
     <item>
       <title>Creating a CRUD API with Go and MongoDB</title>
-      <link>//localhost:1313/tech/mongocrud/</link>
+      <link>/tech/mongocrud/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tech/mongocrud/</guid>
+      <guid>/tech/mongocrud/</guid>
       <description>Setup A CRUD API or a Create-Read-Update-Delete API is one of the first steps you take in your journey exploring the world of backend development.&#xA;Get started with Golang by installing it on your computer if you haven’t already done so.&#xA;This tutorial will require some basic knowledge of golang.&#xA;Next we will install the packages needed for creating the CRUD API. We&amp;rsquo;ll be using Gin Gonic to route the API endpoints.</description>
     </item>
   </channel>
