@@ -22,10 +22,8 @@ This site is pretty much where I dump most of my thoughts while learning new thi
 In sum: These are where I keep my "working notes"
 
 ### Ongoing endeavours
-- Currently working on WasmEdge(a CNCF project) for GSoC
-- Trying to expand my horizons with respect to learning about AI
-- Learning more about functional programming through Ocaml and lisp
-- Trying to read SICP
+- Incoming intern at Hewlett Packard Enterprise!
+- Looking for new and cool stuff to learn
 
 ### Subpages:
 - [Tech](https://sidt008.vercel.app/tech): Where I write about tech in general
