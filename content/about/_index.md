@@ -26,9 +26,9 @@ In sum: These are where I keep my "working notes"
 - Looking for new and cool stuff to learn
 
 ### Subpages:
-- [Tech](https://sidt008.vercel.app/tech): Where I write about tech in general
-- [Linkstash](https://sidt008.vercel.app/linkstash): A collection of selected links
-- [Articles](https://sidt008.vercel.app/articles): A collection of general writing pieces
+- [Tech](/tech): Where I write about tech in general
+- [Linkstash](/linkstash): A collection of selected links
+- [Articles](/articles): A collection of general writing pieces
 
 
 ### What I use
@@ -38,5 +38,4 @@ In sum: These are where I keep my "working notes"
 - HP gaming mouse m100
 - Dell Inspiron 3500(16 gb RAM)
 - Samsung Galaxy s6 lite tab
-
 

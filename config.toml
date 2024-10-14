@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://www.siddharthtewari.me'
 languageCode = 'en-us'
 title = 'Siddharth Tewari'
 theme = 'typo'
@@ -22,7 +22,8 @@ hideHeader = false
 # Intro on main page, content is markdown
 homeIntroTitle = 'Hi!'
 homeIntroContent = """
-I’m Siddharth! I build things. I’m an Engineer, writer(when I feel like it), and in general, someone who likes to constantly learn.
+I’m Siddharth! Welcome to my place on the internet.
+I’m an Engineer, audiophile, biking enthusiast, writer(when I feel like it), and in general, someone who likes to constantly learn.
 I am deeply passionate about systems and networks engineering, if you'd like to talk please reach out to me!
 """
 
@@ -40,12 +41,12 @@ breadcrumbs = true
 
 # Social icons
 [[params.social]]
-name = "twitter"
-url = "https://twitter.com/sidT_008"
-
-[[params.social]]
 name = "github"
 url = "https://github.com/sid-008"
+
+[[params.social]]
+name = "twitter"
+url = "https://twitter.com/sidT_008"
 
 [[params.social]]
 name = "linkedin"
