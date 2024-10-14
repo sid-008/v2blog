@@ -1,1 +1,4 @@
 /* Place custom css here */
+.img-small img {
+ scale: 80%;
+}
