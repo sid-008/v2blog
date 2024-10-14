@@ -13,8 +13,7 @@ Cloud computing evolved as a solution to this issue.
 People no longer had to buy, maintain, manage or setup their own hardware.
 It worked out to be cheaper too, since people could pay only for the resources they used.
 
-
-<img src="/wasm1.png" alt="wasm1.png" width="800" align="center">
+![wasm1](/wasm1.png#dark#small)
 
 This gave rise to various virtualisation technologies like docker and in the 2010s
 the adoption of cloud native tech was on the rise.
@@ -24,8 +23,7 @@ the adoption of cloud native tech was on the rise.
 - Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.
 - WASM has multiple embedding interfaces including: JavaScript APIs, Web APIS, and the WASI API.
 
-
-<img src="/wasm2.png" alt="wasm2.png" width="800" align="center">
+![wasm2](/wasm2.png#dark#small)
 
 # Why WASM?
 - The binary format for WebAssembly can be natively decoded much faster than JavaScript can be parsed (experiments show more than 20× faster). On mobile, large compiled codes can easily take 20–40 seconds just to parse, so native decoding provides a better user experience.
@@ -34,7 +32,7 @@ the adoption of cloud native tech was on the rise.
 - asm.js is essentially just regular js but with AOT compilation and a few other bells and whistles.
 - WASM app sizes are also much smaller compared to regular app images.
 
-<img src="/wasm3.png" alt="wasm3.png" width="800" align="center">
+![wasm3](/wasm3.png#dark#small)
 
 # Where is WASM?
 - [Made with WebAssembly](https://madewithwebassembly.com/)

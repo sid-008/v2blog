@@ -1,0 +1,71 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'Sid T'
+theme = "nightfall"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+author = "Siddharth Tewari"
+user = "sid"
+hostname = "localhost"
+footerHtml = 'I use arch btw'
+
+[[params.social]]
+key = 0
+name = "Github"
+url = "https://github.com/sid-008"
+icon = "fa fa-github fa-2x"  # Add link to your icon font to `layouts/partials/custom-head.html`
+
+[[params.social]]
+key = 1
+name = "Twitter"
+url = "https://twitter.com/sidT_008"
+icon = "fa fa-twitter fa-2x"
+
+[[params.social]]
+key = 2
+name = "Linkedin"
+url = "https://www.linkedin.com/in/siddharth-tewari-40a758221/"
+icon = "fa fa-linkedin fa-2x"
+
+[[params.social]]
+key = 3
+name = "Email"
+url = "mailto:siddharthtewari14@gmail.com"
+icon = "fa fa-envelope fa-2x"
+
+[menu]
+  [[menu.header]]
+    name = ""
+    weight = 1
+    url = "/"
+
+  [[menu.header]]
+    name = "linkstash"
+    weight = 3
+    url = "/linkstash"
+
+  [[menu.header]]
+    name = "tech"
+    weight = 4
+    url = "/tech"
+
+  [[menu.header]]
+    name = "about"
+    weight = 2
+    url = "/about"
+
+  [[menu.header]]
+    name = "articles"
+    weight = 5
+    url = "/articles"
+
+
+
+[taxonomies]
+  tag = 'tags'
+

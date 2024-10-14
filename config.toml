@@ -1,71 +1,82 @@
-baseURL = '/'
+baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'Sid T'
-theme = "nightfall"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-[params]
-author = "Siddharth Tewari"
-user = "sid"
-hostname = "localhost"
-footerHtml = 'I use arch btw'
-
-[[params.social]]
-key = 0
-name = "Github"
-url = "https://github.com/sid-008"
-icon = "fa fa-github fa-2x"  # Add link to your icon font to `layouts/partials/custom-head.html`
-
-[[params.social]]
-key = 1
-name = "Twitter"
-url = "https://twitter.com/sidT_008"
-icon = "fa fa-twitter fa-2x"
-
-[[params.social]]
-key = 2
-name = "Linkedin"
-url = "https://www.linkedin.com/in/siddharth-tewari-40a758221/"
-icon = "fa fa-linkedin fa-2x"
-
-[[params.social]]
-key = 3
-name = "Email"
-url = "mailto:siddharthtewari14@gmail.com"
-icon = "fa fa-envelope fa-2x"
-
-[menu]
-  [[menu.header]]
-    name = ""
-    weight = 1
-    url = "/"
-
-  [[menu.header]]
-    name = "linkstash"
-    weight = 3
-    url = "/linkstash"
-
-  [[menu.header]]
-    name = "tech"
-    weight = 4
-    url = "/tech"
-
-  [[menu.header]]
-    name = "about"
-    weight = 2
-    url = "/about"
-
-  [[menu.header]]
-    name = "articles"
-    weight = 5
-    url = "/articles"
-
-
+title = 'Siddharth Tewari'
+theme = 'typo'
 
 [taxonomies]
-  tag = 'tags'
+tag = 'tags'
 
+[markup.goldmark.renderer]
+unsafe= true
+
+[params]
+# Meta description
+description = "Internet Home"
+showFooter = false
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Hi!'
+homeIntroContent = """
+I’m Siddharth! I build things. I’m an Engineer, writer(when I feel like it), and in general, someone who likes to constantly learn.
+I am deeply passionate about systems and networks engineering, if you'd like to talk please reach out to me!
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Posts'
+homeCollection = 'tech'
+
+# Lists parameters
+paginationSize = 10
+listSummaries = false
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+breadcrumbs = true
+
+# Social icons
+[[params.social]]
+name = "twitter"
+url = "https://twitter.com/sidT_008"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/sid-008"
+
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/siddharth-tewari-40a758221/"
+
+[[params.social]]
+name = "email"
+url = "mailto:siddharthtewari14@gmail.com"
+
+# Main menu pages
+[[params.menu]]
+name = "home"
+url = "/"
+
+[[params.menu]]
+name = "about"
+url = "/about"
+
+[[params.menu]]
+name = "linkstash"
+url = "/linkstash"
+
+[[params.menu]]
+name = "tech"
+url = "/tech"
+
+[[params.menu]]
+name = "articles"
+url = "/articles"
+
+# Syntax highligth on code blocks
+[markup]
+[markup.highlight]
+style = 'base16-snazzy'
