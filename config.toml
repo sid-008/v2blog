@@ -12,7 +12,8 @@ unsafe= true
 [params]
 # Meta description
 description = "Internet Home"
-showFooter = false
+showFooter = true
+footerContent = "Perpetually Curious"
 
 # Appearance settings
 theme = 'auto'
@@ -22,9 +23,10 @@ hideHeader = false
 # Intro on main page, content is markdown
 homeIntroTitle = 'Hi!'
 homeIntroContent = """
-I’m Siddharth! Welcome to my place on the internet.
+I’m Siddharth! Welcome to my home on the internet.
 I’m an Engineer, audiophile, biking enthusiast, writer(when I feel like it), and in general, someone who likes to constantly learn.
-I am deeply passionate about systems and networks engineering, if you'd like to talk please reach out to me!
+I am also incredibly passionate about systems and networks engineering. If you'd like to talk about this
+please do reach out to me!
 """
 
 # Collection to display on home

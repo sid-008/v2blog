@@ -4,13 +4,15 @@ Title: About me
 
 ### Hello there!
 
-Hey, I'm Siddharth! I build things. I'm an Engineer, writer(when I feel like it), and in general, someone who likes to 
-constantly learn about new things, no matter how random they might be.
-Whenever I can, I also go for rides on my bike! (Its a honda h'ness cb350)
+Hey, I'm Siddharth! I build things. I'm an Engineer, audiophile, biking enthustiast(I own a honda h'ness cb350).
+I'm currently in the process of exploring various fields which are new to me and reading more in general.
 
 I am deeply passionate about Computer Science, databases, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you're hiring in this field!
 
 You can also find my [resume here](https://sidt008.vercel.app/SiddharthTewariCV.pdf).
+
+In addition, I also have a dog, her name is Amber. Feel free to reach out for more dog pics.
+![amber](/amber.jpg#small#dark)
 
 ### What is this place?
 
@@ -36,6 +38,6 @@ In sum: These are where I keep my "working notes"
 - Royal kludge GK68(Blue switches <3)
 - Astro Neovim(Tokyonight theme)
 - HP gaming mouse m100
-- Dell Inspiron 3500(16 gb RAM)
+- Dell Inspiron 3500(w/ 16 gb RAM)
 - Samsung Galaxy s6 lite tab
 
