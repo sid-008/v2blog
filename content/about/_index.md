@@ -7,7 +7,7 @@ Title: About me
 Hey, I'm Siddharth! I build things. I'm an Engineer, audiophile, biking enthustiast(I own a honda h'ness cb350).
 I'm currently in the process of exploring various fields which are new to me and reading more in general.
 
-I am deeply passionate about Computer Science, databases, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you're hiring in this field!
+I am deeply passionate about Computer Science, databases, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you'd like to talk about this with me!
 
 <!-- You can also find my [resume here](https://sidt008.vercel.app/SiddharthTewariCV.pdf). -->
 
