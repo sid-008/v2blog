@@ -14,6 +14,7 @@ unsafe= true
 description = "Internet Home"
 showFooter = true
 footerContent = "Perpetually Curious"
+faviconPath = '/home/sid/v2blog/static/'
 
 # Appearance settings
 theme = 'auto'
