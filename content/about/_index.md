@@ -9,7 +9,7 @@ I'm currently in the process of exploring various fields which are new to me and
 
 I am deeply passionate about Computer Science, databases, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you're hiring in this field!
 
-You can also find my [resume here](https://sidt008.vercel.app/SiddharthTewariCV.pdf).
+<!-- You can also find my [resume here](https://sidt008.vercel.app/SiddharthTewariCV.pdf). -->
 
 In addition, I also have a dog, her name is Amber. Feel free to reach out for more dog pics.
 ![amber](/amber.jpg#small#dark)
