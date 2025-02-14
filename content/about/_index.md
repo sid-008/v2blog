@@ -24,8 +24,14 @@ This site is pretty much where I dump most of my thoughts while learning new thi
 In sum: These are where I keep my "working notes"
 
 ### Ongoing endeavours
-- Incoming intern at Hewlett Packard Enterprise!
+- Intern at Hewlett Packard Enterprise.
 - Looking for new and cool stuff to learn
+
+### Previously
+- Google Summer Of Code '24 mentee @ CNCF.
+- Chair @ ACM PESU-ECC.
+- Tech and Marketing lead @ Hackerspace PESU-ECC.
+- Worked at a small startup for a few months writing Go and backend code.
 
 ### Subpages:
 - [Tech](/tech): Where I write about tech in general
