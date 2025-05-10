@@ -23,8 +23,8 @@ a few rounds on it. Later on after owning my own h'ness I realised why people lo
 and refined engine. It is truly a lovely bike to ride.
 
 Riding a motorcycle is a lot like flying to me. Its probably the closest I feel like I can come to flying.
-You just cut through places, here one moment and gone the next. Cruising on highways, just taking in the scenery,
-but not in a static way, in a much more dynamic manner. Watching the scenery pass you by.
+You just cut through places, here one moment and gone the next. Cruising on highways, just taking in the scenery.
+But not in a static way, in a much more dynamic manner. Watching the scenery pass you by.
 Its a feeling you'd understand if you got on 2 wheels and just rode off. Its incredibly different from driving a car.
 In a car you are sheltered from the elements. On a bike, the feelings, sensation, the wind, the temperatures feel
 like they are changing every few moments. Its something else. You just quite literally cut through places. 
