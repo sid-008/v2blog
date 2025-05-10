@@ -27,7 +27,7 @@ You just cut through places, here one moment and gone the next. Cruising on high
 But not in a static way, in a much more dynamic manner. Watching the scenery pass you by.
 Its a feeling you'd understand if you got on 2 wheels and just rode off. Its incredibly different from driving a car.
 In a car you are sheltered from the elements. On a bike, the feelings, sensation, the wind, the temperatures feel
-like they are changing every few moments. Its something else. You just quite literally cut through places. 
+like they are changing every few moments. Its something else. As I said, you just quite literally cut through places. 
 You become one with the machine, the screaming engine, the singing exhaust, the movements of your hands and legs,
 coordinating and changing gears, all of the fluid motions you make are ingrained into your muscle memory. You can
 quite literally go wherever you look, the freedom, the beauty of all of it is truly very cathartic. Not to mention
