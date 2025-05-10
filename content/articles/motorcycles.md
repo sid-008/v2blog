@@ -30,7 +30,7 @@ In a car you are sheltered from the elements. On a bike, the feelings, sensation
 like they are changing every few moments. Its something else. As I said, you just quite literally cut through places. 
 You become one with the machine, the screaming engine, the singing exhaust, the movements of your hands and legs,
 coordinating and changing gears, all of the fluid motions you make are ingrained into your muscle memory. You can
-quite literally go wherever you look, the freedom, the beauty of all of it is truly very cathartic. Not to mention
+quite literally go wherever you want to, until wherever you can see, the freedom, the beauty of all of it is truly very cathartic. Not to mention
 doing this with friends makes the experience even better.
 
 The sensation of all of it is something that just unexplicably makes me happy. I could go on, and just keep talking about
