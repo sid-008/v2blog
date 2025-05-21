@@ -2,73 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Siddharth Tewari</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.siddharthtewari.me/</link>
     <description>Recent content in Home on Siddharth Tewari</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.siddharthtewari.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A love letter to Motorcycling</title>
+      <link>https://www.siddharthtewari.me/articles/motorcycles/</link>
+      <pubDate>Sat, 10 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.siddharthtewari.me/articles/motorcycles/</guid>
+      <description>&lt;p&gt;I got my first motorcycle when I was in my 6th semester of college. It was a honda h&amp;rsquo;ness CB350.&#xA;I had only ever commuted to college on my activa until then. It was my dad&amp;rsquo;s decision to buy one,&#xA;for some reason he was motivated to buy a bike. Obviously I use it more than him now.&lt;/p&gt;&#xA;&lt;p&gt;When I was a kid one of my uncles owned a Yamaha R1 and I have liked bikes ever since then. He also&#xA;owned an Aprilia RSV4 later on and a whole slew of KTM 390s and most recently a KTM 390 adv. The roar&#xA;of the engine of a liter bike was something else to behold. Little did I realise as a kid that these&#xA;motorcycles were quite actually literal death machines that would go incredibly fast at breakneck speeds.&#xA;Those aggressive looks were enough to seduce a younger me into the world of motorcycling.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Anatomy of a Wasm Runtime</title>
-      <link>http://localhost:1313/tech/blrsys_wasm/</link>
+      <link>https://www.siddharthtewari.me/tech/blrsys_wasm/</link>
       <pubDate>Sun, 25 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/blrsys_wasm/</guid>
-      <description>&lt;p&gt;Slides from the Bangalore Systems Aug 2024 talk I gave.&lt;/p&gt;&#xA;&lt;object data=&#34;https://siddharthtewari.me/systemsblrtalk.pdf&#34; type=&#34;application/pdf&#34; width=&#34;700px&#34; height=&#34;700px&#34;&gt;&#xA;    &lt;embed src=&#34;https://siddharthtewari.me/systemsblrtalk.pdf&#34;&gt;&#xA;        &lt;p&gt;This browser does not support PDFs. Please download the PDF to view it: &lt;a href=&#34;https://sidt008.vercel.app/systemsblrtalk.pdf&#34;&gt;Download PDF&lt;/a&gt;.&lt;/p&gt;&#xA;    &lt;/embed&gt;&#xA;&lt;/object&gt;</description>
+      <guid>https://www.siddharthtewari.me/tech/blrsys_wasm/</guid>
+      <description>&lt;p&gt;Slides from the Bangalore Systems Aug 2024 talk I gave.&lt;/p&gt;&#xA;&lt;object data=&#34;https://siddtewari.com/systemsblrtalk.pdf&#34; type=&#34;application/pdf&#34; width=&#34;700px&#34; height=&#34;700px&#34;&gt;&#xA;    &lt;embed src=&#34;https://siddtewari.com/systemsblrtalk.pdf&#34;&gt;&#xA;        &lt;p&gt;This browser does not support PDFs. Please download the PDF to view it: &lt;a href=&#34;https://sidt008.vercel.app/systemsblrtalk.pdf&#34;&gt;Download PDF&lt;/a&gt;.&lt;/p&gt;&#xA;    &lt;/embed&gt;&#xA;&lt;/object&gt;</description>
     </item>
     <item>
       <title>wasm and emscripten</title>
-      <link>http://localhost:1313/tech/wasm/</link>
+      <link>https://www.siddharthtewari.me/tech/wasm/</link>
       <pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/wasm/</guid>
+      <guid>https://www.siddharthtewari.me/tech/wasm/</guid>
       <description>&lt;h1 id=&#34;a-brief-history-of-cloud-computing-and-virtualisation&#34;&gt;A brief history of cloud computing and virtualisation&lt;/h1&gt;&#xA;&lt;p&gt;The cloud has often been simply described as “someone else’s computer”.&#xA;Back in the old days of yore, people would have to setup and manage their own hardware infrastructure and servers.&lt;/p&gt;&#xA;&lt;p&gt;This was quite a hassle and also quite expensive.&#xA;Cloud computing evolved as a solution to this issue.&#xA;People no longer had to buy, maintain, manage or setup their own hardware.&#xA;It worked out to be cheaper too, since people could pay only for the resources they used.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Notes from the PWL October meetup</title>
-      <link>http://localhost:1313/tech/pwl_crdt/</link>
+      <link>https://www.siddharthtewari.me/tech/pwl_crdt/</link>
       <pubDate>Thu, 19 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/pwl_crdt/</guid>
+      <guid>https://www.siddharthtewari.me/tech/pwl_crdt/</guid>
       <description>&lt;p&gt;These are my notes from the October Papers We Love meetup hosted by Madhav Jivrajani.&#xA;The paper discussed was &amp;ldquo;Keep CALM and CRDT on!&amp;rdquo;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what-is-coordination&#34;&gt;What is coordination&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;ldquo;Knowledge is the dual of possibility&amp;rdquo;&lt;/li&gt;&#xA;&lt;li&gt;There&amp;rsquo;s also message re-ordering, network partitions and all other flavours of why dist sys is hard.&lt;/li&gt;&#xA;&lt;li&gt;Other mechanisms like 2PC(2 phase commit) exist.&lt;/li&gt;&#xA;&lt;li&gt;coordination mechanisms are a way to sync access to a shared memory of some sort. Probably the most well studied class of algos in dist sys literature&lt;/li&gt;&#xA;&lt;li&gt;Coord mechanims have massive performance costs attached to them.&lt;/li&gt;&#xA;&lt;li&gt;Intuition from universal scalability law(USL)&lt;/li&gt;&#xA;&lt;li&gt;Linear scalability is a scam&lt;/li&gt;&#xA;&lt;li&gt;As work is done to achieve data consistency, it starts to bottleneck your system&amp;rsquo;s throughput.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;downside-of-coordination&#34;&gt;Downside of coordination&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Coordination avoidance in db systems [paper]&lt;/li&gt;&#xA;&lt;li&gt;Anna: a kvs for any scale [paper]&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;can-we-avoid-coordination&#34;&gt;Can we avoid coordination?&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;A significant amount of non-determinism exists in dist sys.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How do you build a community?</title>
-      <link>http://localhost:1313/articles/communities/</link>
+      <link>https://www.siddharthtewari.me/articles/communities/</link>
       <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/articles/communities/</guid>
+      <guid>https://www.siddharthtewari.me/articles/communities/</guid>
       <description>&lt;h1 id=&#34;so-what-is-a-community&#34;&gt;So what is a community?&lt;/h1&gt;&#xA;&lt;p&gt;In one word? Its home. For me at least, Hackerspace PESU-ECC&amp;rsquo;s Mentor team, GDSC PESU-ECC &amp;lsquo;22 and ACM PESU-ECC had&#xA;been my &amp;ldquo;Home&amp;rdquo; for quite a while. The relentless memes. The insanely enlightening&#xA;conversations. Learning from almost everyone there. The banter, the inside jokes,&#xA;everything on that little whatsapp group was fun. It felt like&#xA;&amp;ldquo;my people&amp;rdquo; and I&amp;rsquo;d often call it home.&lt;/p&gt;&#xA;&lt;p&gt;But how do you build such a community?&lt;/p&gt;</description>
     </item>
     <item>
       <title>What is a visionary?</title>
-      <link>http://localhost:1313/articles/what_is_a_visionary/</link>
+      <link>https://www.siddharthtewari.me/articles/what_is_a_visionary/</link>
       <pubDate>Mon, 24 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/articles/what_is_a_visionary/</guid>
+      <guid>https://www.siddharthtewari.me/articles/what_is_a_visionary/</guid>
       <description>&lt;h1 id=&#34;what-is-a-visionary&#34;&gt;What is a visionary?&lt;/h1&gt;&#xA;&lt;p&gt;When I was first asked this question in my CIE L1 course(A wonderful course offered by my university on entrepreneurship) it made me think. My immediate first thought was: Steve Jobs.&#xA;But it didn&amp;rsquo;t answer the question of what a visionary person really is. This post is meant to be a reflection on this question.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve asked various people on their thoughts regarding this, along with the answers I listened to in class, most people tend to use words like&#xA;&amp;ldquo;future&amp;rdquo;, &amp;ldquo;ideas&amp;rdquo;, &amp;ldquo;innovation&amp;rdquo;. But that didn&amp;rsquo;t really make sense to me. Anyone can be an ideas man, innovation may well be part of being a visionary,&#xA;but a video I watched by &lt;a href=&#34;https://www.youtube.com/watch?v=_ZJpU43NA0c&amp;amp;t=542s&#34;&gt;Mark Manson&lt;/a&gt; on youtube defined what a visionary is to me at least in the most concise manner possible.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Notes from the serverless wasm meetup</title>
-      <link>http://localhost:1313/tech/serverlesswasm/</link>
+      <link>https://www.siddharthtewari.me/tech/serverlesswasm/</link>
       <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/serverlesswasm/</guid>
+      <guid>https://www.siddharthtewari.me/tech/serverlesswasm/</guid>
       <description>&lt;h2 id=&#34;matt-bucher&#34;&gt;Matt Bucher&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Made helm, ex microsoft, kubernetes early days contributor great guy&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;definition-of-serverless&#34;&gt;Definition of Serverless:&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Pattern in which the dev does not write a server process(sockets or daemons), entry point is an event handler&lt;/li&gt;&#xA;&lt;li&gt;Deus, open source competitor to heroku PaaS&lt;/li&gt;&#xA;&lt;li&gt;Explored kubernetes there, ms accquires deus, built AKS there&lt;/li&gt;&#xA;&lt;li&gt;Had to write new dockerfiles and images for diff images and OSs&lt;/li&gt;&#xA;&lt;li&gt;VMs big workhorse of the cloud&lt;/li&gt;&#xA;&lt;li&gt;Most functions as a service are built as a VM, supposed to be super fast, but was built on tech too bloated&lt;/li&gt;&#xA;&lt;li&gt;VM package the entire OS, serveral minutes to start&lt;/li&gt;&#xA;&lt;li&gt;Containers easier to use than VMs, dockerfiles good, dev exp for containers was great. Took 10-20 sec always less than a min&lt;/li&gt;&#xA;&lt;li&gt;Made no sense to have a shortlived process, but wait for 10-20 secs&lt;/li&gt;&#xA;&lt;li&gt;Functions:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Event handler function love&lt;/li&gt;&#xA;&lt;li&gt;Too slow(200 msec)&lt;/li&gt;&#xA;&lt;li&gt;Fixed OS and Arch -&amp;gt; serverless?&lt;/li&gt;&#xA;&lt;li&gt;Difficult dev experience&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;motivation-at-fermyon&#34;&gt;Motivation at fermyon:&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Want fast start times&lt;/li&gt;&#xA;&lt;li&gt;Don&amp;rsquo;t need to know about OS and arc&lt;/li&gt;&#xA;&lt;li&gt;Fermyon Spin: 52ms, AWS lambda 250ms&lt;/li&gt;&#xA;&lt;li&gt;If you hit the 100ms threshold to load a page SEO penalties&lt;/li&gt;&#xA;&lt;li&gt;AWS cappin sayin 200-500ms was good&lt;/li&gt;&#xA;&lt;li&gt;To hit good page speed, you&amp;rsquo;d have to focus a lot on optimisation and stuff&lt;/li&gt;&#xA;&lt;li&gt;WASM: near native start times&lt;/li&gt;&#xA;&lt;li&gt;See, google page speed ranking&lt;/li&gt;&#xA;&lt;li&gt;spin cold starts are like 1ms&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;wasm&#34;&gt;WASM:&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;What is wasm? Its just another bytecode format that is platfrom and arch independent&lt;/li&gt;&#xA;&lt;li&gt;Designed so that in low power environments it can run as interpreted&lt;/li&gt;&#xA;&lt;li&gt;You can run it in JIT mode&lt;/li&gt;&#xA;&lt;li&gt;Make it execute at native speed&lt;/li&gt;&#xA;&lt;li&gt;Pre initilisation when js is used. Shaved off time doing this&lt;/li&gt;&#xA;&lt;li&gt;Mozilla putting scenes with wasm&lt;/li&gt;&#xA;&lt;li&gt;They did development in the open&lt;/li&gt;&#xA;&lt;li&gt;Cross browser support straight away&lt;/li&gt;&#xA;&lt;li&gt;People involved in standardising js were involved with wasm&lt;/li&gt;&#xA;&lt;li&gt;Ruby was supposed to be a shell like language, but then ruby on rails came out&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;wasm-strengths&#34;&gt;WASM strengths:&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Security sandboxing&lt;/li&gt;&#xA;&lt;li&gt;Cross platform and cross architecture&lt;/li&gt;&#xA;&lt;li&gt;Fast&lt;/li&gt;&#xA;&lt;li&gt;Ideally supports compile to all languages&lt;/li&gt;&#xA;&lt;li&gt;Containers weaker because of shared kernel, wasm has much tighter security, it restricts access to sys calls&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;use-cases&#34;&gt;Use cases:&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;BBC and amazon wrote their players on wasm, they have articles check it out&lt;/p&gt;</description>
     </item>
     <item>
       <title>A brief history of init systems</title>
-      <link>http://localhost:1313/tech/init/</link>
+      <link>https://www.siddharthtewari.me/tech/init/</link>
       <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/init/</guid>
+      <guid>https://www.siddharthtewari.me/tech/init/</guid>
       <description>&lt;p&gt;Recently I had the chance to give a talk at the Razorpay office as a part of FOSS United Bangalore&amp;rsquo;s meetup. This was a full length talk&#xA;and I had a great time talking to like minded people about this.&lt;/p&gt;&#xA;&lt;p&gt;This itself is a pretty niche topic, but a lot of people aren&amp;rsquo;t really aware of the system-d feud, so I decided why not give a talk on it?&#xA;The material I used for the talk is below.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Creating a CRUD API with Go and MongoDB</title>
-      <link>http://localhost:1313/tech/mongocrud/</link>
+      <link>https://www.siddharthtewari.me/tech/mongocrud/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tech/mongocrud/</guid>
+      <guid>https://www.siddharthtewari.me/tech/mongocrud/</guid>
       <description>&lt;h1 id=&#34;setup&#34;&gt;Setup&lt;/h1&gt;&#xA;&lt;p&gt;A CRUD API or a Create-Read-Update-Delete API is one of the first steps you take in your journey exploring the world of backend development.&lt;/p&gt;&#xA;&lt;p&gt;Get started with Golang by installing it on your computer if you haven’t already done so.&lt;/p&gt;&#xA;&lt;p&gt;This tutorial will require some basic knowledge of golang.&lt;/p&gt;&#xA;&lt;p&gt;Next we will install the packages needed for creating the CRUD API. We&amp;rsquo;ll be using Gin Gonic to route the API endpoints.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Iran-Contra Affair</title>
-      <link>http://localhost:1313/articles/irancontra/</link>
+      <link>https://www.siddharthtewari.me/articles/irancontra/</link>
       <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/articles/irancontra/</guid>
+      <guid>https://www.siddharthtewari.me/articles/irancontra/</guid>
       <description>&lt;p&gt;(This was originally published &lt;a href=&#34;https://munsocecc.vercel.app/posts/iran_contra_affair&#34;&gt;here&lt;/a&gt;, check out PESU-ECC&amp;rsquo;s MUNSOC site and show them some love!)&lt;/p&gt;&#xA;&lt;h1 id=&#34;iran-contra-affair&#34;&gt;Iran Contra Affair&lt;/h1&gt;&#xA;&lt;p&gt;The sale of arms to Iran, hostage exchanges(supposed), hezbollah and the civil war in Nicaragua. How are all these related? Well its a long story.&lt;/p&gt;&#xA;&lt;p&gt;In simple terms; during the second Reagan term, senior administration officials secretly facilitated the sales of weapons to Iran which at the time was under an arms embargo, and diverted the profits to the Contras, a group of anti-socialist rebels in Nicaragua that were opposed to the socialist Sandinista led government.&lt;/p&gt;</description>
     </item>
   </channel>

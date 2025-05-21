@@ -2,46 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tech/blrsys_wasm/</loc>
+    <loc>https://www.siddharthtewari.me/articles/motorcycles/</loc>
+    <lastmod>2025-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.siddharthtewari.me/articles/</loc>
+    <lastmod>2025-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.siddharthtewari.me/</loc>
+    <lastmod>2025-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.siddharthtewari.me/tech/blrsys_wasm/</loc>
     <lastmod>2024-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.siddharthtewari.me/tech/</loc>
     <lastmod>2024-08-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech/</loc>
-    <lastmod>2024-08-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tech/wasm/</loc>
+    <loc>https://www.siddharthtewari.me/tech/wasm/</loc>
     <lastmod>2024-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech/pwl_crdt/</loc>
+    <loc>https://www.siddharthtewari.me/tech/pwl_crdt/</loc>
     <lastmod>2023-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/</loc>
+    <loc>https://www.siddharthtewari.me/articles/communities/</loc>
     <lastmod>2023-09-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/communities/</loc>
-    <lastmod>2023-09-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/articles/what_is_a_visionary/</loc>
+    <loc>https://www.siddharthtewari.me/articles/what_is_a_visionary/</loc>
     <lastmod>2023-07-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech/serverlesswasm/</loc>
+    <loc>https://www.siddharthtewari.me/tech/serverlesswasm/</loc>
     <lastmod>2023-06-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech/init/</loc>
+    <loc>https://www.siddharthtewari.me/tech/init/</loc>
     <lastmod>2023-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tech/mongocrud/</loc>
+    <loc>https://www.siddharthtewari.me/tech/mongocrud/</loc>
     <lastmod>2023-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/irancontra/</loc>
+    <loc>https://www.siddharthtewari.me/articles/irancontra/</loc>
     <lastmod>2023-01-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://www.siddharthtewari.me/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/linkstash/</loc>
+    <loc>https://www.siddharthtewari.me/linkstash/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.siddharthtewari.me/tags/</loc>
   </url>
 </urlset>
