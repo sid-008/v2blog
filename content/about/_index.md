@@ -7,7 +7,7 @@ Title: About me
 Hey, I'm Siddharth! I build things. I'm an Engineer, audiophile, biking enthustiast(I own a honda h'ness cb350).
 I'm currently in the process of exploring various fields which are new to me and reading more in general.
 
-I am deeply passionate about Computer Science, databases, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you'd like to talk about this with me!
+I am deeply passionate about Computer Science, operating systems and systems engineering in general, feel free to [reach out](mailto:siddharthtewari14@gmail.com) if you'd like to talk about this with me!
 
 <!-- You can also find my [resume here](https://sidt008.vercel.app/SiddharthTewariCV.pdf). -->
 
@@ -24,10 +24,11 @@ This site is pretty much where I dump most of my thoughts while learning new thi
 In sum: These are where I keep my "working notes"
 
 ### Ongoing endeavours
-- Intern at Hewlett Packard Enterprise.
+- Systems Software Engineer @ Hewlett Packard Enterprise.
 - Looking for new and cool stuff to learn
 
 ### Previously
+- Engineering @ InCore Semiconductors.
 - Google Summer Of Code '24 mentee @ CNCF.
 - Chair @ ACM PESU-ECC.
 - Tech and Marketing lead @ Hackerspace PESU-ECC.
@@ -42,7 +43,7 @@ In sum: These are where I keep my "working notes"
 ### What I use
 
 - Royal kludge GK68(Blue switches <3)
-- Astro Neovim(Tokyonight theme)
+- Astro Neovim(Tokyonight)
 - HP gaming mouse m100
 - Dell Inspiron 3500(w/ 16 gb RAM)
 - Samsung Galaxy s6 lite tab
