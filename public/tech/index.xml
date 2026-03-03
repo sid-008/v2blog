@@ -6,8 +6,15 @@
     <description>Recent content in Tech on Siddharth Tewari</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.siddharthtewari.me/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes from the AI engineers Anthropic Meetup</title>
+      <link>https://www.siddharthtewari.me/tech/anthropic_meetup/</link>
+      <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.siddharthtewari.me/tech/anthropic_meetup/</guid>
+      <description>&lt;h1 id=&#34;anthropic-peakxv-meetup&#34;&gt;Anthropic peakxv meetup&lt;/h1&gt;&#xA;&lt;p&gt;These are notes from the Anthropic AI engineers meetup I attended at the Bangalore PeakXV office(9th Oct 2025)&#xA;This is a very rough note based off whatever was being spoken about. If I do get time I will&#xA;refine and elaborate on these notes and add in my impressions. Hope this is helpful to whoever reads it!&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Daniel Delaney&lt;/p&gt;&#xA;&lt;h2 id=&#34;multi-agent-systems&#34;&gt;Multi agent systems&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Anthropic agent SDK&lt;/li&gt;&#xA;&lt;li&gt;single LLM features -&amp;gt; workflows -&amp;gt; agents&lt;/li&gt;&#xA;&lt;li&gt;agents vs workflows there&amp;rsquo;s a diff&lt;/li&gt;&#xA;&lt;li&gt;agents are LLMs using &amp;ldquo;tools&amp;rdquo; dynamically making decisions in their own environment&lt;/li&gt;&#xA;&lt;li&gt;open ended problems where you need to iterate&lt;/li&gt;&#xA;&lt;li&gt;predicts req num of steps&lt;/li&gt;&#xA;&lt;li&gt;multi agents: open ended, parallelisable tasks, lot of info, lot of tools involved&lt;/li&gt;&#xA;&lt;li&gt;multi agents: leverage collective intelligence&lt;/li&gt;&#xA;&lt;li&gt;Opus as &amp;ldquo;lead agent&amp;rdquo; sonnet as &amp;ldquo;sub agents&amp;rdquo;&lt;/li&gt;&#xA;&lt;li&gt;run tasks for longer -&amp;gt; what does that even mean :skull: more tokens used for them xD&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;case-study-multiulti-agent-research-system&#34;&gt;Case Study: Multiulti agent research system&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;agentic search is open ended prob&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Anatomy of a Wasm Runtime</title>
       <link>https://www.siddharthtewari.me/tech/blrsys_wasm/</link>

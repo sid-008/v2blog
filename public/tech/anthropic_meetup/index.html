@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="https://www.siddharthtewari.me/home/sid/v2blog/static//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.siddharthtewari.me/home/sid/v2blog/static//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.siddharthtewari.me/home/sid/v2blog/static//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.siddharthtewari.me/home/sid/v2blog/static//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.siddharthtewari.me/home/sid/v2blog/static//apple-touch-icon.png">
+
+<meta name="description" content="Notes from the Anthropic AI Engineers Meetup @ PeakXV Blr"/>
+
+<title>
+    
+    Notes from the AI engineers Anthropic Meetup | Siddharth Tewari
+    
+</title>
+
+<link rel="canonical" href="https://www.siddharthtewari.me/tech/anthropic_meetup/"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.ad2f3027caeae43af660fffc18eff13bdb057131c21b6865a450a78ce7cfa61b.css" media="all">
+
+
+
+
+
+
+
+
+
+  </head>
+
+  
+
+  
+  
+  
+
+  <body class="auto">
+
+    <div class="content">
+      <header>
+        
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">Siddharth Tewari</h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /about
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/linkstash" >
+                /linkstash
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/tech" >
+                /tech
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/articles" >
+                /articles
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+      </header>
+
+      <main class="main">
+        
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a href="/tech/">Tech</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a class="breadcrumbs-current" href="/tech/anthropic_meetup/">Notes from the AI engineers Anthropic Meetup</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Notes from the AI engineers Anthropic Meetup</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2026-01-03T00:00:00&#43;00:00">January 3, 2026</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <h1 id="anthropic-peakxv-meetup">Anthropic peakxv meetup</h1>
+<p>These are notes from the Anthropic AI engineers meetup I attended at the Bangalore PeakXV office(9th Oct 2025)
+This is a very rough note based off whatever was being spoken about. If I do get time I will
+refine and elaborate on these notes and add in my impressions. Hope this is helpful to whoever reads it!</p>
+<p>Speaker: Daniel Delaney</p>
+<h2 id="multi-agent-systems">Multi agent systems</h2>
+<ul>
+<li>Anthropic agent SDK</li>
+<li>single LLM features -&gt; workflows -&gt; agents</li>
+<li>agents vs workflows there&rsquo;s a diff</li>
+<li>agents are LLMs using &ldquo;tools&rdquo; dynamically making decisions in their own environment</li>
+<li>open ended problems where you need to iterate</li>
+<li>predicts req num of steps</li>
+<li>multi agents: open ended, parallelisable tasks, lot of info, lot of tools involved</li>
+<li>multi agents: leverage collective intelligence</li>
+<li>Opus as &ldquo;lead agent&rdquo; sonnet as &ldquo;sub agents&rdquo;</li>
+<li>run tasks for longer -&gt; what does that even mean :skull: more tokens used for them xD</li>
+</ul>
+<h2 id="case-study-multiulti-agent-research-system">Case Study: Multiulti agent research system</h2>
+<ul>
+<li>
+<p>agentic search is open ended prob</p>
+</li>
+<li>
+<p>multiple pathways to go down</p>
+</li>
+<li>
+<p>clear sep of concerns</p>
+</li>
+<li>
+<p>parallelise for speed</p>
+</li>
+<li>
+<p>need to manage context intelligently</p>
+</li>
+<li>
+<p>independent exploration</p>
+</li>
+<li>
+<p>Lead agent and as many subagents are required as it thinks</p>
+</li>
+<li>
+<p>memory system</p>
+</li>
+<li>
+<p>citations agent for eg.</p>
+</li>
+<li>
+<p>orchestrator workflow</p>
+</li>
+<li>
+<p>similar to single agent system?</p>
+</li>
+<li>
+<p>Lead does most of the thinking</p>
+</li>
+<li>
+<p>spin up subagents as many as it needs</p>
+</li>
+<li>
+<p>subagents iterate as much as required</p>
+</li>
+</ul>
+<h3 id="downfall">Downfall</h3>
+<ul>
+<li>coordination complexity</li>
+<li>simple queries resulted in 50 subagents apparently in early systems</li>
+<li>solution: prompt engg leverage</li>
+</ul>
+<h3 id="solutions">Solutions:</h3>
+<ul>
+<li>Good prompt engineering, think like your agents</li>
+<li>Build sims to understand prompt effects</li>
+<li>early agents were way too verbose
+<ul>
+<li>selected incorrect tools</li>
+</ul>
+</li>
+<li>effective prompting requires an accurate mental model of the agent</li>
+<li>scale effort to complexity, don&rsquo;t let agents overuse resources</li>
+<li>the lead agent needs to estimate a good amount to understand where resources go and how</li>
+</ul>
+<h4 id="scale-effort-to-query-complexity">Scale effort to query complexity</h4>
+<ul>
+<li>Be explicit with what difficulty looks like</li>
+</ul>
+<h4 id="teach-the-orchestrator-how-to-delegate">Teach the orchestrator how to delegate</h4>
+<ul>
+<li>explicitly direct subagents about how to operate</li>
+<li>best prompts are frameworks for collaboration, define division of labour and budgets and prob solving approaches</li>
+</ul>
+<h4 id="focus-on-good-heuristics-rather-than-rigid-rules">Focus on good heuristics rather than rigid rules</h4>
+<ul>
+<li>decompose difficult decisions into smaller tasks</li>
+<li>eval source quality(device db -&gt; qdrant)</li>
+<li>Operating heuristicc/ways to learn trumps rigid rules</li>
+<li>Get the agent to <em>think</em> trust the general intelligence of the model
+use good heuristics to instruct</li>
+<li>This has been only possible in the last 6 months, but the trust is hard to keep
+up with.</li>
+<li>tool descriptions matter so that subagents can understand what to use</li>
+</ul>
+<h4 id="build-agents-to-improve-other-agents">Build agents to improve other agents</h4>
+<ul>
+<li>agents are excellent prompt engineers</li>
+<li>trained 1 agents to make tools more effective</li>
+<li>said agent rewrote desc for the tools so subagents could understand it better</li>
+</ul>
+<h4 id="evals">Evals</h4>
+<ul>
+<li>Test multi agent systems early, its apparently very often, small tweaks to the lead agent
+resulted in huge cascading changes</li>
+<li>if they didn&rsquo;t do this it would have been really hard to diagnose issues later on</li>
+<li>don&rsquo;t delay until you can build more through evals</li>
+</ul>
+<h4 id="llm-as-a-judge">LLM as a judge</h4>
+<ul>
+<li>LLMs are natural fits for grading outputs when given eval heuristics</li>
+<li>LLM as a judge scales to hundreds of outputs and a range of use cases</li>
+</ul>
+<h4 id="dont-discount-human-evals">Don&rsquo;t discount human evals</h4>
+<ul>
+<li>People testing agents find things that evals miss</li>
+</ul>
+<h4 id="costs">Costs</h4>
+<ul>
+<li>Very expensive</li>
+<li>15x more tokens</li>
+</ul>
+
+    
+  </div>
+
+  
+
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/tech/blrsys_wasm/">
+                        Anatomy of a Wasm Runtime
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+      </main>
+    </div>
+
+    <footer>
+      
+
+    
+    
+    
+    <p>Perpetually Curious</p>
+    
+
+
+
+    </footer>
+    
+  </body>
+
+  <script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+</html>
