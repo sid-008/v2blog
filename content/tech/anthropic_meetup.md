@@ -6,9 +6,10 @@ description: Notes from the Anthropic AI Engineers Meetup @ PeakXV Blr
 
 # Anthropic peakxv meetup
 
-These are notes from the Anthropic AI engineers meetup I attended at the Bangalore PeakXV office(9th Oct 2025)
+These are notes from the Anthropic AI engineers meetup I attended at the Bangalore PeakXV office(9th Oct 2025).
 This is a very rough note based off whatever was being spoken about. If I do get time I will
 refine and elaborate on these notes and add in my impressions. Hope this is helpful to whoever reads it!
+NOTE: This does not reflect my opinion of LLMs or Anthropic, all opinions are explicitly tagged and mentioned.
 
 Speaker: Daniel Delaney
 
@@ -58,7 +59,6 @@ Speaker: Daniel Delaney
 #### Scale effort to query complexity
 - Be explicit with what difficulty looks like
 
-
 #### Teach the orchestrator how to delegate
 - explicitly direct subagents about how to operate
 - best prompts are frameworks for collaboration, define division of labour and budgets and prob solving approaches
@@ -87,6 +87,7 @@ Speaker: Daniel Delaney
 #### LLM as a judge
 - LLMs are natural fits for grading outputs when given eval heuristics
 - LLM as a judge scales to hundreds of outputs and a range of use cases
+- (My personal opinion on this is that their testing methods were incredibly shaky at best)
 
 #### Don't discount human evals
 - People testing agents find things that evals miss
