@@ -1,3 +1,12 @@
+---
+title: The 3 types of Managers I have seen
+date: 2026-11-q1
+description: Many managers, wish work upon me, I do it
+tag: Ramblings
+author: You
+---
+
+
 # The 3 types of managers I've seen
 
 I've been working from the 2nd year of college(in limited scope during college). Twice at startups, once at an MNC, and once for GSOC for which I was given a stipend. Theoretically, I had 1.5 years of experience if you include internships post graduation. 
