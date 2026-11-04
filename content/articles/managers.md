@@ -17,7 +17,7 @@ After graduation I was given a boon in joining a very amazing company, which I w
 - Was insanely chill about stuff
 - Got shit done from you regardless of being chill, since he had a good rapport with you, he could gently push you
 - Could be incredibly stubborn at times about goals
-- The teams success is his success.
+- The team's success is his success.
 
 2. The engineer
 - typically a higher position engineer turned into a manager or CTO
