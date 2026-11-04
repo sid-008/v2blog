@@ -1,6 +1,6 @@
 ---
 title: The 3 types of Managers I have seen
-date: 2026-11-q1
+date: 2026-11-4
 description: Many managers, wish work upon me, I do it
 tag: Ramblings
 author: You
