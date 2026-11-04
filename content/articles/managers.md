@@ -6,9 +6,6 @@ tag: Ramblings
 author: You
 ---
 
-
-# The 3 types of managers I've seen
-
 I've been working from the 2nd year of college(in limited scope during college). Twice at startups, once at an MNC, and once for GSOC for which I was given a stipend. Theoretically, I had 1.5 years of experience if you include internships post graduation. 
 
 After graduation I was given a boon in joining a very amazing company, which I worked at for 6 months before leaving due to a conflict of my own personal passions. I think throughout my experiences I've met 3 different kind of managers I would report to, and what I think of these 3 types
