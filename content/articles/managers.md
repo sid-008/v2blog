@@ -22,7 +22,7 @@ After graduation I was given a boon in joining a very amazing company, which I w
 - The teams success is his success as well.
 
 3. The lala manager:
-- the word lala might be a slur, but I had to work under one of these.
+- the word lala might be a corporate slang of sorts, but I had to work under one of these.
 - Mostly confused about requirements
 - Daily 180 degree turns about work
 - Just horrid to work under.
